@@ -29,3 +29,45 @@ body {
 .navbarRow td {
 	white-space:nowrap;
 }
+
+.middlePane {
+	border-style: solid;
+	border-radius: 30px;
+
+	width: 400px;
+	height: 600px;
+
+	margin: auto;
+	/*margin-top: 200px;*/
+
+	padding-top: 30px;
+
+	text-align: center;
+
+	background-color: LightGoldenRodYellow ;
+}
+
+.loginPage {
+	background-color: #06B6FF;
+	background-image: url("../img/clouds.jpg");
+	background-repeat: repeat-x;
+	background-position: left bottom;
+}
+
+/*sticky wrapper*/
+* {
+margin: 0;
+}
+html, body {
+height: 100%;
+}
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -55px;
+}
+.footer, .push {
+height: 55px;
+}
+/**/
