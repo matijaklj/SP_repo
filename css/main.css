@@ -1,0 +1,94 @@
+.trending {
+    width: 20%;
+    float: left;
+}
+.profile {
+    width: 20%;
+    float: left;
+    visibility: hidden;
+}
+.newsfeed {
+    float: left;
+    width: 60%;
+}
+.centered-content {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* div float left se pripne na lev element
+v kombinaciji s floatom se uporabi se clear lastnost*/
+
+.header-link {
+    float: right;
+    clear: right;
+}
+
+header {
+    background-color: gray;
+    clear: both;
+    width:100%;
+
+}
+
+.search-bar {
+    width: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+footer {
+    clear: both;
+}
+article {
+    width: 560px;
+    margin-left: auto;;
+    margin-right: auto;
+
+}
+
+article.post {
+
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.cover-image {
+    object-fit: cover;
+}
+div .cover-image {
+    width: inherit;;
+    height: 90px;
+}
+
+.profile-image {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    top: -50px;
+    left: 20px;
+}
+.profile-image-div {
+    position: absolute;;
+}
+
+.profile-name {
+    padding-left: 140px;
+    padding-top: 10px;
+
+    font-weight: bold;
+}
+
+.post-text {
+    padding: 20px;
+}
+
+.trending-box {
+    padding-left: 20px;
+    padding-top: 50px;
+}
