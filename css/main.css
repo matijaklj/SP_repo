@@ -92,3 +92,91 @@ div .cover-image {
     padding-left: 20px;
     padding-top: 50px;
 }
+
+/*form label {
+    float: left;
+    clear: both;
+}*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.login-div {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 30px;
+
+    background-color: lightblue;
+    border-color: black;
+    border-radius: 40px;
+
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form .login-input {
+    order: 1;
+}
+
+.login-form .login-input a img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.login-form .login-input label {
+    float: left;
+    clear: both;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.login-form .login-input label input {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    font-size: 27px;
+}
+
+.login-form .login-submit {
+    order: 2;
+    align-self: flex-end;
+}
+
+.login-form .login-submit {
+    order: 2;
+    align-self: flex-end;
+}
+
+.login-submit input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    font-size: 20px;
+}
+
+@media screen and (min-width: 560px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
