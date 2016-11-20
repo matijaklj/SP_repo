@@ -21,11 +21,38 @@
     </header>
 
     <div class="centered-content">
-        <div class="profile hidden">
-            lala
+        <div class="profile">
+            <div class="my-profile">
+                <div class="cover-image">
+                    <img class="cover-image" src="img/clouds.jpg" alt="cover photo" />
+                </div>
+                <div class="profile-image-div">
+                    <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
+                </div>
+                <h2 class="profile-name">Matija Kljun</h2>
+                <ul>
+                    <li><span></span> Settings</li>
+                    <li><span>168</span> followers</li>
+                    <li><span>134</span> people you follow</li>
+                </ul>
+            </div>
         </div>
-
         <section class="newsfeed">
+            <div class="new-post">
+                <form class="new-post-form" action="#new-post" method="post">
+                    <textarea name="post-text" rows="8" cols="40"></textarea>
+
+                    <span class="post-addition">
+                        <label ><input type="button" name="add-location" value="add location"></label>
+                        <label ><input type="button" name="add-image" value="add image"></label>
+                        <label ><input type="button" name="add-link" value="add link"></label>
+                    </span>
+                    <label class="submit-post"><input type="submit" name="submit-post" value="POST"></label>
+
+                </form>
+
+            </div>
+
             <article class="post">
 
                 <div class="cover-image">
@@ -78,13 +105,6 @@
                     </p>
                 </div>
 
-            </article>
-
-            <article class="post">
-                <h1>Post 2</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
             </article>
 
         </section>
