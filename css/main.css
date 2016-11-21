@@ -1,70 +1,198 @@
-.trending {
-    width: 20%;
-    float: left;
-}
-.profile {
-    width: 20%;
-    float: left;
-}
-.hidden {
-    visibility: hidden;
-}
-.newsfeed {
-    float: left;
-    width: 60%;
-}
+
 .centered-content {
     width: 960px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* div float left se pripne na lev element
-v kombinaciji s floatom se uporabi se clear lastnost*/
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile {
+    order: 1;
+    flex-grow: 1;
+}
+
+.newsfeed {
+    order: 2;
+    flex-grow: 3;
+}
+
+.trending {
+    order: 3;
+    flex-grow: 1;
+}
+
+/* trending-box css */
+.trending-box {
+    background-color: white;
+
+    padding-left: 5px;
+}
+.trending-box ul {
+    list-style-type: none;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.trending-box ul li {
+
+    margin-top: 5px;
+}
+
+@media screen and (min-width: 960px) {
+    .trending-box {
+        margin-left: 20px;
+        margin-top: 20px;
+
+        border-style: solid;
+        border-width: 2px;
+        border-color: black;
+        border-radius: 10px;
+        box-shadow: 7px 7px 10px #aaaaaa;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .centered-content {
+        width: auto;
+    }
+    .main-container {
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .newsfeed {
+        width: 80%;
+        flex: 1 1;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .trending {
+        order: 1;
+    }
+    .trending-box {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+
+        background-color: #FFDA61;
+    }
+    .trending-box h4, .trending-box ul, .trending-box ul li {
+        display: inline;
+    }
+    .profile {
+        order: 3;
+        display: none;
+    }
+}
+@media screen and (max-width: 560px) {
+    .newsfeed {
+        width: 100%;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /*width: 80%;
+    margin-left: auto;
+    margin-right: auto; */
+}
+
+.nav-logo {
+    order: 1;
+}
+
+.nav-search {
+    flex: 2 2;
+    order: 2;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.nav-search input {
+    width: 100%;
+}
 
 .header-link {
-    float: right;
-    clear: right;
+    order: 3;
+    margin-right: 10px;
+}
+
+.buttn {
+    border-radius: 10px;
+    background-color: lightblue;
+    padding: 5px 10px 5px 10px;
+    white-space: nowrap;
+}
+.buttn a {
+    text-decoration: none;
+    text-decoration-color: yellow;
+}
+.buttn a:visited {
+    color: gray;
+}
+.buttn a:link {
+    color: darkblue;
+}
+.buttn a:hover {
+    color: white;
+}
+.buttn:hover {
+    background-color: darkblue;
 }
 
 header {
-    background-color: gray;
-    clear: both;
-    width:100%;
-
+    background-color: #229AE3;
 }
 
-.search-bar {
-    width: 60%;
-    margin-top: auto;
-    margin-bottom: auto;
+body {
+    margin: 0px;
+
+    font-family:  Helvetica;
+
+    background-color: lightgray;
 }
 
 footer {
     clear: both;
 }
-article {
-    width: 560px;
-    margin-left: auto;
-    margin-right: auto;
 
-}
-
-article.post {
+.post {
+    background-color: white;
 
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    border-radius: 10px;
+    box-shadow: 7px 7px 10px #aaaaaa;
 
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .cover-image {
+    width: 100%;
     object-fit: cover;
 }
+
+.cover-image img {
+    border-radius: 10px 10px 0px 0px;
+}
+
 div .cover-image {
-    width: inherit;;
     height: 90px;
 }
 
@@ -76,7 +204,7 @@ div .cover-image {
     left: 20px;
 }
 .profile-image-div {
-    position: absolute;;
+    position: absolute;
 }
 
 .profile-name {
@@ -88,11 +216,6 @@ div .cover-image {
 
 .post-text {
     padding: 20px;
-}
-
-.trending-box {
-    padding-left: 20px;
-    padding-top: 50px;
 }
 
 /*form label {
@@ -188,10 +311,16 @@ div .cover-image {
     font-size: 20px;
 }
 
+/* new post css */
+
 .new-post {
+    background-color: white;
+
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    border-radius: 10px;
+    box-shadow: 7px 7px 10px #aaaaaa;
 
     margin-top: 10px;
     margin-bottom: 10px;
@@ -235,12 +364,16 @@ form .submit-post {
 /* my profile */
 
 .my-profile {
+    background-color: white;
+
     margin-right: 20px;
     margin-top: 20px;
 
     border-style: solid;
     border-color: black;
     border-width: 2px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 10px #aaaaaa;
 }
 
 div .my-profile .cover-image {
