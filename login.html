@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
 <title>Microblog login page</title>
+<meta charset="utf-8">
 <link rel="stylesheet" href="css/main.css">
 <body>
     <header>
     </header>
-    <div class="container">
+    <div class="container-middle">
         <div class="login-div">
-            <a href="index.html"><img src="http://placehold.it/470x150" alt="logo"/></a>
-            <form class="login-form" action="home.html" method="post">
+            <form class="login-form" action="" method="post">
+                <a href="index.html"><img src="img/logo.png" alt="logo"/></a>
                 <div class="login-input">
-                    <label>Email or username: <input type="text" name="username" required></input></label>
-                    <label>Password: <input type="password" name="password" required></input></label>
+                    <label>Email or username: <input id="username" type="text" name="username" required></input></label>
+                    <label>Password: <input id="password" type="password" name="password" required></input></label>
                 </div>
-                <label class="login-submit"><input type="submit" name="Log in"></input></label>
+                <label class="login-submit"><input type="submit" value="Log in" onclick="login(event)"></input></label>
             </form>
         </div>
     </div>
     <footer>
     </footer>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
-
 </html>

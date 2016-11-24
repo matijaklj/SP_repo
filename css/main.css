@@ -1,3 +1,38 @@
+.nav-bar {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /*width: 80%;
+    margin-left: auto;
+    margin-right: auto; */
+}
+.nav-logo {
+    order: 1;
+    margin: 5px;
+}
+.nav-logo img {
+    vertical-align: middle;
+    width: 200px
+}
+.nav-search {
+    flex: 2 2;
+    order: 2;
+
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.nav-search input {
+    width: 100%;
+}
+.header-link {
+    order: 3;
+    margin-right: 10px;
+}
 
 .centered-content {
     width: 960px;
@@ -13,7 +48,7 @@
 
 .profile {
     order: 1;
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 .newsfeed {
@@ -93,42 +128,14 @@
     .newsfeed {
         width: 100%;
     }
+
+    .nav-bar {
+        width: 100%;
+    }
 }
 
 .hidden {
     visibility: hidden;
-}
-
-
-.nav-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /*width: 80%;
-    margin-left: auto;
-    margin-right: auto; */
-}
-
-.nav-logo {
-    order: 1;
-}
-
-.nav-search {
-    flex: 2 2;
-    order: 2;
-
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-.nav-search input {
-    width: 100%;
-}
-
-.header-link {
-    order: 3;
-    margin-right: 10px;
 }
 
 .buttn {
@@ -154,6 +161,11 @@
     background-color: darkblue;
 }
 
+.icon {
+    height: 15px;
+}
+
+
 header {
     background-color: #229AE3;
 }
@@ -163,7 +175,7 @@ body {
 
     font-family:  Helvetica;
 
-    background-color: lightgray;
+    background-color: #D4E6F1;
 }
 
 footer {
@@ -196,7 +208,9 @@ div .cover-image {
     height: 90px;
 }
 
-.profile-image {
+.profile-image-div .profile-image {
+    width: 100px;
+    height: : 100px;
     border-radius: 50%;
     position: absolute;
     z-index: 10;
@@ -215,7 +229,12 @@ div .cover-image {
 }
 
 .post-text {
-    padding: 20px;
+    padding: 4px 20px 4px 20px;
+}
+
+.tags {
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
 
 /*form label {
@@ -223,7 +242,7 @@ div .cover-image {
     clear: both;
 }*/
 
-.container {
+.container-middle {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,28 +253,14 @@ div .cover-image {
     width: 100%;
 }
 
-@media only screen and (max-width: 800px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-
-        position: relative;
-    }
-}
-
-
 .login-div {
     order: 1;
-    width: auto;
     margin-left: auto;
     margin-right: auto;
 
     padding: 30px;
 
-    background-color: lightblue;
-    border-color: black;
+    background-color: white;
     border-radius: 40px;
 
 }
@@ -377,7 +382,7 @@ form .submit-post {
 }
 
 div .my-profile .cover-image {
-    width: 100%;
+    width: 170px;
     height: 90px;
 }
 
