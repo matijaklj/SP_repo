@@ -29,7 +29,7 @@ function userHandlerJson(event) {
 }
 
 function getLocation() {
-    var x = document.getElementById("res");
+    x = document.getElementById("res");
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -111,9 +111,8 @@ function createArticlePost(coverImage, profileImage, username, text, loc, callba
         a.setAttribute("href", loc);
         var span = document.createElement("span");
         span.className += "buttn";
-        var icon = document.createElement("img");
-        icon.className += "icon";
-        icon.setAttribute("src", "icon/location.png");
+        var icon = document.createElement("div");
+        icon.className += "sprite sprite-location";
         span.appendChild(icon);
         span.innerHTML += " Location";
         a.appendChild(span);
@@ -123,4 +122,17 @@ function createArticlePost(coverImage, profileImage, username, text, loc, callba
     }
 
     if(callback != null) callback(art);
+}
+
+function collapseMenu(event) {
+    document.getElementById("show-menu").className = "header-link-colapsed buttn";
+    document.getElementById("collapse-menu").className = "header-link-colapsed buttn no-display";
+    //document.getElementById("show-menu").style.display = "block";
+    //document.getElementById("collapse-menu").style.display = "none";
+}
+function showMenu(event) {
+    document.getElementById("collapse-menu").className = "header-link-colapsed buttn";
+    document.getElementById("show-menu").className = "header-link-colapsed buttn no-display";
+    //document.getElementById("show-menu").style.display = "none";
+    //document.getElementById("collapse-menu").style.display = "block";
 }

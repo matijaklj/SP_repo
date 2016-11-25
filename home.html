@@ -9,16 +9,33 @@
 
 <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 <body>
+    <div id="popup">
+
+            <a href="#" style="float:right">x</a></br>Pozdravljen svet!<br/>Zunaj je danes sonce in mraz ko v pasic.
+            </br>Pozdravljen svet!<br/>
+            </br>Pozdravljen svet!<br/>
+            </br>Pozdravljen svet!<br/>
+
+            </br>Pozdravljen svet!<br/>
+
+    </div>
+
     <header>
         <div class="nav-bar">
             <div class="nav-logo">
                 <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . .">
+                <input type="search" name="search" placeholder="Search. . ." class="sprite sprite-search"></input>
             </div>
             <div class="header-link buttn">
                 <a href="index.html">Sing out</a>
+            </div>
+            <div class="header-link-colapsed buttn" id="show-menu">
+                <div class="sprite sprite-menu"></div><a href="#popup" onclick="showMenu(event)">Menu</a>
+            </div>
+            <div class="header-link-colapsed buttn no-display" id="collapse-menu">
+                <div class="sprite sprite-menu"></div><a href="#" onclick="collapseMenu(event)">Zapri</a>
             </div>
         </div>
     </header>
@@ -78,7 +95,8 @@
                         </div>
                         <!-- post lcoation -->
                         <div class="tags">
-                            <a href="https://www.google.com/maps?q=46.049440999999995,14.4864194"><span class="buttn"><img class="icon" src="icon/location.png"/> Location</span></a>
+                            <a href="https://www.google.com/maps?q=46.049440999999995,14.4864194"><span class="buttn"><div class="sprite sprite-location"></div> Location</span></a>
+
                         </div>
 
 

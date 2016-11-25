@@ -28,10 +28,53 @@
 }
 .nav-search input {
     width: 100%;
+    height: 25px;
+
+    padding-left: 20px;
 }
 .header-link {
     order: 3;
     margin-right: 10px;
+    display: none;
+}
+.header-link-colapsed {
+    order: 3;
+    margin-right: 10px;
+}
+
+#popup {
+    height: 0;
+    width: 0;
+    transition: none;
+    overflow: hidden;
+}
+
+#popup:target {
+	display:block;
+    width: 100%;
+    height: 200px;
+
+	position: fixed;
+    top: 46.5px;
+
+	font-size: 15px;
+    background: #1779b5;
+
+	padding-bottom: 1.5em;
+    transition: height 0.7s;
+}
+
+@media screen and (min-width: 60em) {
+    .header-link-colapsed {
+        display: none;
+    }
+
+    .header-link {
+        display: block;
+    }
+    #popup:target {
+        display: none;
+    }
 }
 
 .centered-content {
@@ -78,7 +121,7 @@
     margin-top: 5px;
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60em) {
     .trending-box {
         margin-left: 20px;
         margin-top: 20px;
@@ -91,7 +134,7 @@
     }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 60em) {
     .centered-content {
         width: auto;
     }
@@ -124,7 +167,7 @@
         display: none;
     }
 }
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 35em) {
     .newsfeed {
         width: 100%;
     }
@@ -134,8 +177,8 @@
     }
 }
 
-.hidden {
-    visibility: hidden;
+.no-display {
+    display: none;
 }
 
 .buttn {
@@ -403,3 +446,54 @@ div .my-profile .cover-image {
 
     font-weight: bold;
 }
+
+/* sprites */
+.sprite {
+    background-image: url("../icon/spritesheet.png");
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+}
+
+.sprite-link {
+    width: 20px;
+    height: 20px;
+    background-position: -5px -5px;
+}
+
+.sprite-location {
+    width: 20px;
+    height: 20px;
+    background-position: -35px -5px;
+}
+
+.sprite-menu {
+    width: 20px;
+    height: 20px;
+    background-position: -5px -35px;
+}
+
+.sprite-ok {
+    width: 20px;
+    height: 20px;
+    background-position: -35px -35px;
+}
+
+.sprite-people {
+    width: 20px;
+    height: 20px;
+    background-position: -65px -5px;
+}
+
+.sprite-search {
+    width: 20px;
+    height: 20px;
+    background-position: -65px -35px;
+}
+
+.sprite-setting {
+    width: 20px;
+    height: 20px;
+    background-position: -5px -65px;
+}
+/* ------ */
