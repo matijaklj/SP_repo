@@ -2,6 +2,7 @@
     background-color: inherit;
 
     width: 80%;
+    height: 50px;
     margin-left: 10%;
     margin-right: 10%;
 
@@ -66,7 +67,7 @@
 
 	position: relative;
 
-    transition: max-height 1.5s ease-in;
+    transition: max-height 0.5s ease-in;
 
     display: flex;
     flex-direction: column;
@@ -91,7 +92,9 @@
         display: block;
     }
     #dropdown-menu:target {
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        padding-bottom: 0;
     }
 }
 
@@ -109,7 +112,6 @@
 
 .profile {
     order: 1;
-    flex-grow: 2;
 }
 
 .newsfeed {
@@ -119,7 +121,6 @@
 
 .trending {
     order: 3;
-    flex-grow: 1;
 }
 
 .newsfeed-index {
@@ -240,7 +241,7 @@ header {
     background-color: #229AE3;
     position: absolute;
     top: 0;
-    height: 46.5px;
+    height: 50px;
     width: 100%;
 }
 
@@ -284,7 +285,7 @@ div .cover-image {
 
 .profile-image-div .profile-image {
     width: 100px;
-    height: : 100px;
+    height: 100px;
     border-radius: 50%;
     position: absolute;
     z-index: 10;
@@ -464,6 +465,8 @@ form .submit-post {
 .my-profile {
     background-color: white;
 
+    max-width: 175px;
+
     margin-right: 20px;
     margin-top: 20px;
 
@@ -475,7 +478,7 @@ form .submit-post {
 }
 
 div .my-profile .cover-image {
-    width: 170px;
+    width: 100%;
     height: 90px;
 }
 
@@ -495,6 +498,8 @@ div .my-profile .cover-image {
     padding-top: 40px;
 
     font-weight: bold;
+
+    white-space: nowrap;
 }
 
 /* sprites */
@@ -606,6 +611,61 @@ div .my-profile .cover-image {
     display: inline;
     padding-left: 20px;
     margin-bottom: 40px;
+    white-space: nowrap;
+}
+
+.profile-site {
+    margin-top: 10px;
+
+    border: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 10px;
+
+    background-color: white;
+
+}
+
+.profile-desc {
+        display: flex;
+        flex-direction: row;
+}
+
+.profile-site .cover-image {
+    height: 150px;
+}
+
+.profile-site .profile-image-div .profile-image {
+    left: 50px;
+}
+.profile-site .profile-tags {
+    order: 1;
+    width: auto;
+}
+.profile-site .tag {
+    width: 170px;
+    margin-left: 50px;
+    margin-bottom: 05px;
+
+    padding-left: 20px;
+}
+
+.profile-site .profile-name {
+    padding-left: 180px;
+    padding-top: 0px;
+}
+
+.profile-site .profile-bio {
+    order: 2;
+    margin-left: 50px;
+}
+.profile-site .profile-bio p {
+    margin-top: 5px;
+}
+
+.profile-posts {
+    width: 65%;
+    margin: auto;
 }
 
 .hid  {

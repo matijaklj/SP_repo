@@ -56,7 +56,12 @@ function submitPost(event) {
 
     if(postForm.loc != null) loc = postForm.loc;
 
-    createArticlePost("img-json/cover1.jpg", "img-json/profile-image1.jpg", "Mister X", text, loc, function(post) {
+    if(text == "" && loc == "") {
+        alert("Cant post empty post!");
+        return;
+    }
+
+    createArticlePost("img/users/janez/cover-image.jpg", "img/users/janez/profile-image.jpg", "Janez Novak", text, loc, function(post) {
         document.getElementById("newsfeed").insertBefore(post, document.getElementById("newsfeed").firstChild);
     });
 
