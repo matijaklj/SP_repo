@@ -9,15 +9,25 @@
 
 <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 <body>
-    <div id="popup">
+    <div id="dropdown-menu">
+        <div class="menu-profile">
+            <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
 
-            <a href="#" style="float:right">x</a></br>Pozdravljen svet!<br/>Zunaj je danes sonce in mraz ko v pasic.
-            </br>Pozdravljen svet!<br/>
-            </br>Pozdravljen svet!<br/>
-            </br>Pozdravljen svet!<br/>
+            <h2 class="profile-name">Matija Kljun</h2>
+            <div class="tag"><span class="sprite sprite-setting"></span> Settings</div>
+            <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
+            <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
+        </div>
 
-            </br>Pozdravljen svet!<br/>
-
+        <div class="container-menu">
+            <div class="menu-search">
+                <input type="search" name="search" placeholder="Search. . ." ></input>
+                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
+            </div>
+            <a href="index.html" class="menu-singout"><div class="buttn">
+                Sing out
+            </div></a>
+        </div>
     </div>
 
     <header>
@@ -26,13 +36,14 @@
                 <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ." class="sprite sprite-search"></input>
+                <input type="search" name="search" placeholder="Search. . ."></input>
+                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
             <div class="header-link buttn">
                 <a href="index.html">Sing out</a>
             </div>
             <div class="header-link-colapsed buttn" id="show-menu">
-                <div class="sprite sprite-menu"></div><a href="#popup" onclick="showMenu(event)">Menu</a>
+                <div class="sprite sprite-menu"></div><a href="#dropdown-menu" onclick="showMenu(event)">Menu</a>
             </div>
             <div class="header-link-colapsed buttn no-display" id="collapse-menu">
                 <div class="sprite sprite-menu"></div><a href="#" onclick="collapseMenu(event)">Zapri</a>
@@ -51,27 +62,25 @@
                         <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
                     </div>
                     <h2 class="profile-name">Matija Kljun</h2>
-                    <ul>
-                        <li><span></span> Settings</li>
-                        <li><span>168</span> followers</li>
-                        <li><span>134</span> people you follow</li>
-                    </ul>
+                    <div class="tag"><span class="sprite sprite-setting"></span> Settings</div>
+                    <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
+                    <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                 </div>
             </div>
             <section class="newsfeed">
                 <div class="new-post" id="new-post">
                     <form class="new-post-form" action="#new-post" method="post">
-                        <textarea name="post-text" rows="8" cols="40"></textarea>
+                        <textarea id="post-input" name="post-text" rows="5" cols="40"></textarea>
 
                         <span class="post-addition">
-                            <label ><input class="buttn" type="button" name="add-location" value="add location" onclick="getLocation()" ></label>
-                            <label ><input class="buttn" type="button" name="add-image" value="add image"></label>
-                            <label ><input class="buttn" type="button" name="add-link" value="add link"></label>
+                            <span id="add-location" class="buttn" name="add-location" onclick="getLocation()" >add location</span>
+                            <span  class="buttn" name="add-image" >add image</span>
+                            <span class="buttn" name="add-link" >add link</span>
                         </span>
                         <label class="submit-post" ><input class="buttn" type="button" name="submit-post" value="POST" onclick="submitPost(event)"></label>
-                        <p id="res">
+                        <span id="new-post-tags">
 
-                        </p>
+                        </span>
                     </form>
 
                 </div>

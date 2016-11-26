@@ -1,7 +1,9 @@
 .nav-bar {
+    background-color: inherit;
+
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10%;
+    margin-right: 10%;
 
     display: flex;
     flex-direction: row;
@@ -25,12 +27,14 @@
 
     margin-right: 10px;
     margin-left: 10px;
+    visibility: hidden;
 }
 .nav-search input {
-    width: 100%;
+    width: calc(100% - 20px);
     height: 25px;
 
-    padding-left: 20px;
+    border-radius: 10px;
+    float: left;
 }
 .header-link {
     order: 3;
@@ -42,37 +46,51 @@
     margin-right: 10px;
 }
 
-#popup {
-    height: 0;
-    width: 0;
-    transition: none;
+#dropdown-menu {
+    max-height: 0;
+    background: #1779b5;
+    font-size: 15px;
+
+    margin-top: 46.5px;
+
+    transition: max-height 0.2s ease-out;
     overflow: hidden;
 }
 
-#popup:target {
+#dropdown-menu:target {
 	display:block;
     width: 100%;
-    height: 200px;
+    padding-bottom: 1.5em;
 
-	position: fixed;
-    top: 46.5px;
+    max-height : 450px;
 
-	font-size: 15px;
-    background: #1779b5;
+	position: relative;
 
-	padding-bottom: 1.5em;
-    transition: height 0.7s;
+    transition: max-height 1.5s ease-in;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap:
 }
-
+@media screen and (min-width: 30em) {
+    #dropdown-menu:target {
+        flex-direction: row;
+    }
+}
 @media screen and (min-width: 60em) {
     .header-link-colapsed {
         display: none;
     }
 
+    .nav-search {
+        visibility: visible;
+    }
+
     .header-link {
         display: block;
     }
-    #popup:target {
+    #dropdown-menu:target {
         display: none;
     }
 }
@@ -102,6 +120,10 @@
 .trending {
     order: 3;
     flex-grow: 1;
+}
+
+.newsfeed-index {
+    width: 62%;
 }
 
 /* trending-box css */
@@ -174,6 +196,8 @@
 
     .nav-bar {
         width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -203,6 +227,9 @@
 .buttn:hover {
     background-color: darkblue;
 }
+.buttn:hover {
+    cursor: pointer;
+}
 
 .icon {
     height: 15px;
@@ -211,6 +238,10 @@
 
 header {
     background-color: #229AE3;
+    position: absolute;
+    top: 0;
+    height: 46.5px;
+    width: 100%;
 }
 
 body {
@@ -278,6 +309,13 @@ div .cover-image {
 .tags {
     padding-left: 20px;
     padding-bottom: 20px;
+}
+
+.tag {
+    padding: 3px;
+    border-radius: 4px;
+    background-color: lightblue;
+    margin: 3px 3px;
 }
 
 /*form label {
@@ -390,7 +428,8 @@ div .cover-image {
 
 }
 .new-post form .post-addition {
-    order: 2;
+    order: 3;
+    padding-left: 10px;
 }
 
 .post-addition label {
@@ -398,7 +437,7 @@ div .cover-image {
 }
 
 form .submit-post {
-    order: 3;
+    order: 4;
     align-self: flex-end;
 
     margin: 10px;
@@ -407,6 +446,17 @@ form .submit-post {
 
     padding: 5px 20px 5px 20px;
 
+}
+
+#post-input {
+    font-size: 15px;
+}
+
+#new-post-tags {
+    margin-left: 10px;
+    order: 2;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 /* my profile */
@@ -497,3 +547,67 @@ div .my-profile .cover-image {
     background-position: -5px -65px;
 }
 /* ------ */
+
+.container-menu {
+    flex-grow: 2;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.menu-search {
+    order: 1;
+    margin-top: 5px;
+}
+.menu-search input {
+    width: calc(100% - 20px);
+    height: 25px;
+
+    border-radius: 10px;
+    float:left;
+}
+
+.search-buttn {
+    background-color: white;
+    border-radius:2px;
+    margin-top: 2.5px;
+}
+
+.menu-singout {
+    order: 2;
+    margin-top: 10px;
+}
+
+.menu-profile {
+    flex-grow: 1;
+    background-color: lightblue;
+
+    border-radius: 10px;
+
+    height: auto;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+
+}
+.menu-profile .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.menu-profile .profile-name {
+    display: inline;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+.hid  {
+    visibility: hidden;
+}

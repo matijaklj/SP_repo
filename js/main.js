@@ -1,4 +1,5 @@
 var user;
+postForm = {};
 
 function login(event) {
     var usersFile = "json/users"; // name of the .json file with the user info
@@ -29,20 +30,57 @@ function userHandlerJson(event) {
 }
 
 function getLocation() {
-    x = document.getElementById("res");
 
-    if (navigator.geolocation) {
+    if (postForm.loc == null && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
+        //x.innerHTML = "Geolocation is not supported by this browser.";
     }
 }
 
 function showPosition(position) {
-    x.innerHTML = "<a href=\"http://maps.google.com/?q="+ position.coords.latitude +","+ position.coords.longitude +"\">@lokacija</a>"
+    var x = document.getElementById("new-post-tags");
+
+    x.innerHTML += "<a class=\"buttn\" href=\"http://maps.google.com/?q="+ position.coords.latitude +","+ position.coords.longitude +"\"><div class=\"sprite sprite-location\"></div>lokacija</a>"
+
+    postForm.loc = "http://maps.google.com/?q="+ position.coords.latitude +","+ position.coords.longitude;
+
+    document.getElementById("add-location").setAttribute("disabled");
 }
 
 function submitPost(event) {
+    var filename = "json/post1"; //name od the .json file with posts
+
+    var text = document.getElementById("post-input").value;
+    var loc = "";
+
+    if(postForm.loc != null) loc = postForm.loc;
+
+    createArticlePost("img-json/cover1.jpg", "img-json/profile-image1.jpg", "Mister X", text, loc, function(post) {
+        document.getElementById("newsfeed").insertBefore(post, document.getElementById("newsfeed").firstChild);
+    });
+
+    document.getElementById("post-input").value = "";
+
+    formPost = {};
+     document.getElementById("new-post-tags").innerHTML = "";
+/*
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance
+    xmlhttp.addEventListener("load", postHandlerJson);
+    xmlhttp.open("POST", "json/action");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            alert(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.send(JSON.stringify({"cover-image": "img-json/cover1.jpg",
+                                "profile-image": "img-json/profile-image1.jpg",
+                                "username": "Mister X",
+                                "text": text,
+                                "location": loc}));
+*/
+/* // this is for reading posts
     var filename = "json/post1"; //name od the .json file with posts
 
     var oReq = new XMLHttpRequest();
@@ -52,6 +90,7 @@ function submitPost(event) {
 	oReq.send();
 
 	event.preventDefault();
+*/
 }
 
 function postHandlerJson(event) {
