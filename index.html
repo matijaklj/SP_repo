@@ -2,38 +2,14 @@
 <html>
 <title>Microblog</title>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 <body>
-    <header>
-        <div class="nav-bar">
-            <div class="nav-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
-            </div>
-            <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."></input>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn" ></div></a>
-            </div>
-            <a href="login.html" class="header-link buttn"><div >
-                Log in
-            </div></a>
-            <a href="register.html" class="header-link buttn"><div >
-                Sing up
-            </div></a>
-            <a href="#dropdown-menu" onclick="showMenu(event)" class="header-link-colapsed buttn" id="show-menu"><div>
-                <div class="sprite sprite-menu"></div>Menu
-            </div></a>
-            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn no-display" id="collapse-menu"><div>
-                <div class="sprite sprite-menu"></div>Zapri
-            </div></a>
-        </div>
-    </header>
-
     <div id="dropdown-menu">
         <div class="container-menu">
             <div class="menu-search">
                 <input type="search" name="search" placeholder="Search. . ." ></input>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn" ></div></a>
+                <a href="index.html" ><div class="sprite sprite-search search-buttn" ></div></a>
             </div>
             <a href="login.html" class="menu-singout"><div class="buttn">
                 Log in
@@ -44,21 +20,41 @@
         </div>
     </div>
 
+    <header>
+        <div class="nav-bar">
+            <div class="nav-logo">
+                <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
+            </div>
+            <div class="nav-search">
+                <input type="search" name="search" placeholder="Search. . ."></input>
+                <a href="index.html" ><div class="sprite sprite-search search-buttn" ></div></a>
+            </div>
+            <a href="login.html" class="header-link buttn"><div >
+                Log in
+            </div></a>
+            <a href="register.html" class="header-link buttn"><div >
+                Sing up
+            </div></a>
+            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu"><div>
+                <div class="sprite sprite-menu"></div>Menu
+            </div></a>
+        </div>
+    </header>
+
     <div class="centered-content">
         <div class="main-container">
             <div class="profile">
                 <div class="my-profile hid">
                     <div class="cover-image">
-                        <img class="cover-image" src="img/clouds.jpg" alt="cover photo" />
+                        <img class="cover-image" src="" alt="cover photo" />
                     </div>
                     <div class="profile-image-div">
-                        <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
+                        <img class="profile-image" src="" alt="profile picture" />
                     </div>
-                    <h2 class="profile-name">Matija Kljun</h2>
+                    <h2 class="profile-name">/h2>
                     <ul>
-                        <li><span></span> Settings</li>
-                        <li><span>168</span> followers</li>
-                        <li><span>134</span> people you follow</li>
+                        <li><span></span></li>
+                        <li><span></span></li>
                     </ul>
                 </div>
             </div>

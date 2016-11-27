@@ -1,0 +1,37 @@
+[
+    {
+        "cover-image": "img/users/dalai/cover-image.jpg",
+        "profile-image": "img/users/dalai/profile-image.jpg",
+        "username": "Tenzin Gyatso",
+        "text": "Every day, think as you wake up, today I am fortunate to be alive, I have a precious human life, I am not going to waste it. I am going to use all my energies to develop myself, to expand my heart out to others; to achieve enlightenment for the benefit of all beings. I am going to have kind thoughts towards others, I am not going to get angry or think badly about others. I am going to benefit others as much as I can.",
+        "location": ""
+    },
+    {
+        "cover-image": "img/users/janez/cover-image.jpg",
+        "profile-image": "img/users/janez/profile-image.jpg",
+        "username": "Janez Novak",
+        "text": "Peljem psa na sprehod :) #smarna",
+        "location": "https://goo.gl/maps/HKnJB2YMALq"
+    },
+    {
+        "cover-image": "img/users/dalai/cover-image.jpg",
+        "profile-image": "img/users/dalai/profile-image.jpg",
+        "username": "Tenzin Gyatso",
+        "text": "Be kind whenever possible. It is always possible. #kind #happy",
+        "location": "https://goo.gl/maps/QZzWsMBknQT2"
+    },
+    {
+        "cover-image": "img/users/trump/cover-image.jpg",
+        "profile-image": "img/users/trump/profile-image.jpg",
+        "username": "The real Trump",
+        "text": "Make America great again! #MAGA @HillaryClinton",
+        "location": ""
+    },
+    {
+        "cover-image": "img/users/dalai/cover-image.jpg",
+        "profile-image": "img/users/dalai/profile-image.jpg",
+        "username": "Tenzin Gyatso",
+        "text": "Happiness is not something ready made. It comes from your own actions. #QuoteOfTheDay",
+        "location": "https://goo.gl/maps/KoLqHomR1Hk"
+    }
+]

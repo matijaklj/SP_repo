@@ -52,7 +52,7 @@
     background: #1779b5;
     font-size: 15px;
 
-    margin-top: 46.5px;
+    padding-top: 46.5px;
 
     transition: max-height 0.2s ease-out;
     overflow: hidden;
@@ -176,14 +176,22 @@
         order: 1;
     }
     .trending-box {
-        padding-bottom: 10px;
-        padding-top: 10px;
+        padding-bottom: 5px;
+        padding-top: 5px;
         padding-left: 10px;
 
         background-color: #FFDA61;
     }
     .trending-box h4, .trending-box ul, .trending-box ul li {
-        display: inline;
+        display: inline-block;
+    }
+    .trending-box h4, .trending-box ul {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+    .trending-box ul li {
+        margin-top: 1px;
+        margin-bottom: 1px;
     }
     .profile {
         order: 3;
@@ -193,6 +201,8 @@
 @media screen and (max-width: 35em) {
     .newsfeed {
         width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
     }
 
     .nav-bar {
@@ -330,9 +340,13 @@ div .cover-image {
     align-items: center;
     justify-content: center;
 
-    position: absolute;
-    height: 100%;
-    width: 100%;
+
+}
+
+@media screen and (min-width: 50em) {
+    .container-middle {
+        margin-top: 50px;
+    }
 }
 
 .login-div {
@@ -396,6 +410,10 @@ div .cover-image {
     padding-right: 40px;
 
     font-size: 20px;
+}
+
+.large-logo {
+    width: 100%;
 }
 
 /* new post css */
@@ -465,7 +483,7 @@ form .submit-post {
 .my-profile {
     background-color: white;
 
-    max-width: 175px;
+    width: 175px;
 
     margin-right: 20px;
     margin-top: 20px;
@@ -658,6 +676,7 @@ div .my-profile .cover-image {
 .profile-site .profile-bio {
     order: 2;
     margin-left: 50px;
+    margin-right: 50px;
 }
 .profile-site .profile-bio p {
     margin-top: 5px;
@@ -666,6 +685,15 @@ div .my-profile .cover-image {
 .profile-posts {
     width: 65%;
     margin: auto;
+}
+
+@media screen and (max-width: 40em) {
+    .profile-desc {
+        flex-direction: column;
+    }
+    .profile-posts {
+        width: 100%;
+    }
 }
 
 .hid  {

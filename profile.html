@@ -2,26 +2,23 @@
 <html>
 <title>Microblog</title>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 <body>
     <header>
         <div class="nav-bar">
             <div class="nav-logo">
-                <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
+                <a href="home.html"><img src="img/logo.png" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
                 <input type="search" name="search" placeholder="Search. . ."></input>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn" ></div></a>
+                <a href="profile.html" ><div class="sprite sprite-search search-buttn" ></div></a>
             </div>
             <a href="index.html" class="header-link buttn"><div >
                 Sing out
             </div></a>
-            <a href="#dropdown-menu" onclick="showMenu(event)" class="header-link-colapsed buttn" id="show-menu"><div>
+            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="show-menu"><div>
                 <div class="sprite sprite-menu"></div>Menu
-            </div></a>
-            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn no-display" id="collapse-menu"><div>
-                <div class="sprite sprite-menu"></div>Zapri
             </div></a>
         </div>
     </header>
@@ -60,6 +57,23 @@
                     </div>
             </div>
             <div class="profile-posts">
+                    <article class="post">
+                        <div class="cover-image"><img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo"></div>
+                        <div class="profile-image-div"><img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile photo"></div>
+                        <h2 class="profile-name">Janez Novak</h2>
+                        <div class="post-text">
+                            <p>Peljem psa na sprehod :) <a href="#">#smarna</a></p>
+                        </div>
+                        <div class="tags">
+                            <a href="https://goo.gl/maps/HKnJB2YMALq">
+                                <span class="buttn">
+                                    <div class="sprite sprite-location"></div>
+                                    Location
+                                </span>
+                            </a>
+                        </div>
+                    </article>
+
                     <article class="post">
 
                         <div class="cover-image">

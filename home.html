@@ -2,18 +2,18 @@
 <html>
 <title>Microblog</title>
 <meta charset="utf-8">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <noscript>
   <meta http-equiv="refresh" content="0;url=home-noscript.html">
 </noscript>
 
 <link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
-<body>
+<body onload="readPosts(event)">
     <div id="dropdown-menu">
         <div class="menu-profile">
             <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
 
-            <h2 class="profile-name">Janez Novak</h2>
+            <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
             <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
             <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
         </div>
@@ -38,15 +38,12 @@
                 <input type="search" name="search" placeholder="Search. . ."></input>
                 <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
-            <div class="header-link buttn">
-                <a href="index.html">Sing out</a>
-            </div>
-            <div class="header-link-colapsed buttn" id="show-menu">
-                <div class="sprite sprite-menu"></div><a href="#dropdown-menu" onclick="showMenu(event)">Menu</a>
-            </div>
-            <div class="header-link-colapsed buttn no-display" id="collapse-menu">
-                <div class="sprite sprite-menu"></div><a href="#" onclick="collapseMenu(event)">Zapri</a>
-            </div>
+            <a href="index.html" class="header-link buttn">
+                Sing out
+            </a>
+            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu">
+                <div class="sprite sprite-menu"></div>Menu
+            </a>
         </div>
     </header>
 
@@ -60,7 +57,7 @@
                     <div class="profile-image-div">
                         <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
                     </div>
-                    <h2 class="profile-name">Janez Novak</h2>
+                    <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
                     <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
                     <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                 </div>
