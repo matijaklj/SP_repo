@@ -6,7 +6,7 @@ Spletna stran Microblog je podprta za delovanje tako na večjih zaslonih (osebni
 ## Ciljna publika
 Aplikacija je namenjena vsem ljudem, ki želijo deliti objave z drugimi ali le slediti objavam ostalih uporabnikov.
 
-## Aplikacija je dostopna na spletni povezavi: [https://sp-microblog.herokuapp.com](https://sp-microblog.herokuapp.com)
+## Aplikacija je dostopna na spletni povezavi: [sp-microblog.herokuapp.com](https://sp-microblog.herokuapp.com)
 
 ## Delovanje in izgled strani v treh brskalnikih
 Aplikacijo sem stestiral v treh brskalnikih in sicer Google Chrome, Mozilla Firefox in Opera.
