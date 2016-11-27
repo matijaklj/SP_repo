@@ -1,33 +1,4 @@
-var user;
 postForm = {};
-
-function login(event) {
-    var usersFile = "json/users"; // name of the .json file with the user info
-
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", userHandlerJson);
-    oReq.open("GET", usersFile+".json");
-    oReq.responseType = "text";
-    oReq.send();
-
-    event.preventDefault();
-}
-
-function userHandlerJson(event) {
-    var usersJson = JSON.parse(this.responseText);
-
-    var u = document.getElementById("username").value;
-    var p = document.getElementById("password").value;
-    console.log(u + " " + p);
-
-    for (var i = 0; i < usersJson.length; i++) {
-        if((usersJson[i].username == u || usersJson[i].email == u) && usersJson[i].password == p) {
-            window.location = "home.html";
-            return;
-        }
-    }
-    console.log("wrong username or password!!!");
-}
 
 function getLocation() {
 

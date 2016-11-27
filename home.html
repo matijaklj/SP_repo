@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <noscript>
-  <meta http-equiv="refresh" content="0;url=home-noscript.html">
+  <meta http-equiv="refresh" content="0; url=home-noscript.html">
 </noscript>
+<link rel="stylesheet" href="css/main.css">
 
-<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
 <body onload="readPosts(event)">
     <div id="dropdown-menu">
         <div class="menu-profile">
@@ -20,7 +20,7 @@
 
         <div class="container-menu">
             <div class="menu-search">
-                <input type="search" name="search" placeholder="Search. . ." ></input>
+                <input type="search" name="search" placeholder="Search. . ."/>
                 <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
             <a href="index.html" class="menu-singout"><div class="buttn">
@@ -35,7 +35,7 @@
                 <a href="home.html"><img src="img/logo.png" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."></input>
+                <input type="search" name="search" placeholder="Search. . ."/>
                 <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
             <a href="index.html" class="header-link buttn">
@@ -62,15 +62,15 @@
                     <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                 </div>
             </div>
-            <section class="newsfeed">
+            <div class="newsfeed">
                 <div class="new-post" id="new-post">
                     <form class="new-post-form" action="#new-post" method="post">
                         <textarea id="post-input" name="post-text" rows="5" cols="40"></textarea>
 
                         <span class="post-addition">
-                            <span id="add-location" class="buttn" name="add-location" onclick="getLocation()" >add location</span>
-                            <span  class="buttn" name="add-image" >add image</span>
-                            <span class="buttn" name="add-link" >add link</span>
+                            <span id="add-location" class="buttn" onclick="getLocation()" >add location</span>
+                            <span  class="buttn">add image</span>
+                            <span class="buttn">add link</span>
                         </span>
                         <label class="submit-post" ><input class="buttn" type="button" name="submit-post" value="POST" onclick="submitPost(event)"></label>
                         <span id="new-post-tags">
@@ -83,12 +83,12 @@
                     <article class="post">
 
                         <div class="cover-image">
-                            <img class="cover-image" src="img/clouds.jpg" alt="cover photo" />
+                            <img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo" />
                         </div>
                         <div class="profile-image-div">
-                            <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
+                            <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
                         </div>
-                        <h2 class="profile-name">Matija Kljun</h2>
+                        <h2 class="profile-name">Janez Novak</h2>
                         <div class="post-text">
                             <p>
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -99,7 +99,7 @@
                         </div>
                         <!-- post lcoation -->
                         <div class="tags">
-                            <a href="https://www.google.com/maps?q=46.049440999999995,14.4864194"><span class="buttn"><div class="sprite sprite-location"></div> Location</span></a>
+                            <a href="https://www.google.com/maps?q=46.049440999999995,14.4864194"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
 
                         </div>
 
@@ -109,37 +109,42 @@
                     <article class="post">
 
                         <div class="cover-image">
-                            <img class="cover-image" src="img/clouds.jpg" alt="cover photo" />
+                            <img class="cover-image" src="img/users/hillary/cover-image.jpg" alt="cover photo" />
                         </div>
                         <div class="profile-image-div">
-                            <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
+                            <img class="profile-image" src="img/users/hillary/profile-image.jpg" alt="profile picture" />
                         </div>
                         <h2 class="profile-name">Hillary Clinton</h2>
                         <div class="post-text">
                             <p>
-                               So sad that I lost. #GoToHellThurmp
+                                So sad that I lost.
                             </p>
+                        </div>
+                        <!-- post lcoation -->
+                        <div class="tags">
+                            <a href="https://goo.gl/maps/pGXmBqf3Jz82"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
+
                         </div>
                     </article>
 
                     <article class="post">
 
                         <div class="cover-image">
-                            <img class="cover-image" src="img/clouds.jpg" alt="cover photo" />
+                            <img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo" />
                         </div>
                         <div class="profile-image-div">
-                            <img class="profile-image" src="http://placehold.it/100x100" alt="profile picture" />
+                            <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
                         </div>
-                        <h2 class="profile-name">The Real Thrump</h2>
+                        <h2 class="profile-name">Janez Novak</h2>
                         <div class="post-text">
                             <p>
-                                make murica great again i will. #win #iAmTheChampion
+                                Dolores inu reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
                         </div>
 
                     </article>
                 </div>
-            </section>
+            </div>
 
             <div class="trending">
                 <div class="trending-box">

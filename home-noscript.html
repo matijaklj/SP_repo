@@ -3,7 +3,7 @@
 <title>Microblog</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="css/main.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="css/main.css">
 <body>
     <div id="dropdown-menu">
         <a href="#"><div class="buttn" style="order:5">X</div></a>
@@ -18,7 +18,7 @@
 
         <div class="container-menu">
             <div class="menu-search">
-                <input type="search" name="search" placeholder="Search. . ." ></input>
+                <input type="search" name="search" placeholder="Search. . ."/>
                 <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
             <a href="index.html" class="menu-singout"><div class="buttn">
@@ -34,7 +34,7 @@
                 <a href="index.html"><img src="img/logo.png" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."></input>
+                <input type="search" name="search" placeholder="Search. . ."/>
                 <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
             </div>
             <div class="header-link buttn">
@@ -62,15 +62,15 @@
                     <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                 </div>
             </div>
-            <section class="newsfeed">
+            <div class="newsfeed">
                 <div class="new-post" id="new-post">
                     <form class="new-post-form" action="home.html" method="post">
                         <textarea id="post-input" name="post-text" rows="5" cols="40"></textarea>
 
                         <span class="post-addition">
-                            <span id="add-location" class="buttn" name="add-location" onclick="getLocation()" >add location</span>
-                            <span  class="buttn" name="add-image" >add image</span>
-                            <span class="buttn" name="add-link" >add link</span>
+                            <span id="add-location" class="buttn" onclick="getLocation()" >add location</span>
+                            <span  class="buttn">add image</span>
+                            <span class="buttn">add link</span>
                         </span>
                         <label class="submit-post" ><input class="buttn" type="submit" name="submit-post" value="POST" ></label>
                         <span id="new-post-tags">
@@ -96,7 +96,7 @@
                         </div>
                         <!-- post lcoation -->
                         <div class="tags">
-                            <a href="https://goo.gl/maps/pGXmBqf3Jz82"><span class="buttn"><div class="sprite sprite-location"></div> Location</span></a>
+                            <a href="https://goo.gl/maps/pGXmBqf3Jz82"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
 
                         </div>
                     </article>
@@ -133,12 +133,12 @@
                             </p>
                         </div>
                         <div class="tags">
-                            <a href="https://goo.gl/maps/8tSGcrTMZD12"><span class="buttn"><div class="sprite sprite-location"></div> Location</span></a>
+                            <a href="https://goo.gl/maps/8tSGcrTMZD12"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
 
                         </div>
                     </article>
                 </div>
-            </section>
+            </div>
 
             <div class="trending">
                 <div class="trending-box">
