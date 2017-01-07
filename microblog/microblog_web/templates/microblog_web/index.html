@@ -1,62 +1,17 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<title>Microblog</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<!--<noscript>
-  <meta http-equiv="refresh" content="0; url=home-noscript.html">
-</noscript>-->
-<link rel="stylesheet" href="{% static 'microblog/main.css' %}">
+{% extends "microblog_web/base.html" %}
 
-<body onload="readPosts(event)">
-    <div id="dropdown-menu">
-        <div class="menu-profile">
-            <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
-
-            <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
-            <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
-            <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
-        </div>
-
-        <div class="container-menu">
-            <div class="menu-search">
-                <input type="search" name="search" placeholder="Search. . ."/>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
-            </div>
-            <a href="index.html" class="menu-singout"><div class="buttn">
-                Sing out
-            </div></a>
-        </div>
-    </div>
-
-    <header>
-        <div class="nav-bar">
-            <div class="nav-logo">
-                <a href="home.html"><img src="img/logo.png" alt="Microblog" /></a>
-            </div>
-            <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."/>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
-            </div>
-            <a href="index.html" class="header-link buttn">
-                Sing out
-            </a>
-            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu">
-                <div class="sprite sprite-menu"></div>Menu
-            </a>
-        </div>
-    </header>
-
+{% block main %}
     <div class="centered-content">
         <div class="main-container">
             <div class="profile">
-                <div class="my-profile">
+                <div class="my-profile" {% if not user.is_authenticated %}
+                style="visibility: hidden;"
+                {% endif %}>
                     <div class="cover-image">
-                        <img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo" />
+                        <img class="cover-image" src="" alt="cover photo" />
                     </div>
                     <div class="profile-image-div">
-                        <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
+                        <img class="profile-image" src="" alt="profile picture" />
                     </div>
                     <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
                     <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
@@ -64,7 +19,9 @@
                 </div>
             </div>
             <div class="newsfeed">
-                <div class="new-post" id="new-post">
+                <div class="new-post" id="new-post" {% if not user.is_authenticated %}
+                style="display: none;"
+                {% endif %}>
                     <form class="new-post-form" action="#new-post" method="post">
                         <textarea id="post-input" name="post-text" rows="5" cols="40"></textarea>
 
@@ -81,6 +38,10 @@
 
                 </div>
                 <div class="posts" id="newsfeed">
+                    {% for post in posts %}
+                        {% include 'microblog_web/post.html' %}
+                    {% endfor %}
+<!--
                     <article class="post">
 
                         <div class="cover-image">
@@ -98,7 +59,7 @@
                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
                         </div>
-                        <!-- post lcoation -->
+                        <!-- post lcoation
                         <div class="tags">
                             <a href="https://www.google.com/maps?q=46.049440999999995,14.4864194"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
 
@@ -121,7 +82,7 @@
                                 So sad that I lost. <a href="#GoToHellTrump">#GoToHellTrump</a>
                             </p>
                         </div>
-                        <!-- post lcoation -->
+                        <!-- post lcoation
                         <div class="tags">
                             <a href="https://goo.gl/maps/pGXmBqf3Jz82"><span class="buttn"><span class="sprite sprite-location"></span> Location</span></a>
 
@@ -144,6 +105,7 @@
                         </div>
 
                     </article>
+-->
                 </div>
             </div>
 
@@ -160,12 +122,4 @@
             </div>
         </div>
     </div>
-    <footer class="centered-content">
-        <p>
-            @MatijaKljun ~~~ Copyright (c) 2016 <a href="https://en.wikipedia.org/wiki/Fair_use#Fair_use_and_parody">Fair use Parody please dont sue</a>
-        </p>
-    </footer>
-
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+{% endblock %}

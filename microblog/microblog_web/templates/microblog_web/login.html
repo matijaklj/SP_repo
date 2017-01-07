@@ -1,0 +1,25 @@
+{% extends "microblog_web/base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container-middle">
+    <div class="login-div">
+        <div class="login-form">
+            <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            <form action="/microblog/login" method="POST">
+                {% csrf_token %}
+                <label for="username">Email or username: </label>
+                <input id="username" type="text" name="username" required/>
+
+                <label for"password">Password: </label>
+                <input id="password" type="password" name="password" required/>
+
+                <input class="login-submit" type="submit" value="Log in"/>
+            </form>
+            {% if error %}
+                <label for="error">{{error}}</label>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Microblog</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--<noscript>
+  <meta http-equiv="refresh" content="0; url=home-noscript.html">
+</noscript>-->
+<link rel="stylesheet" href="{% static 'microblog/main.css' %}">
+
+<body>
+    <div id="dropdown-menu">
+        <div class="menu-profile">
+            <img class="profile-image" src="" alt="profile picture" />
+
+            <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
+            <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
+            <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
+        </div>
+
+        <div class="container-menu">
+            <div class="menu-search">
+                <input type="search" name="search" placeholder="Search. . ."/>
+                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
+            </div>
+            <a href="index.html" class="menu-singout"><div class="buttn">
+                Sing out
+            </div></a>
+        </div>
+    </div>
+
+    <header>
+        <div class="nav-bar">
+            <div class="nav-logo">
+                <a href="/microblog"><img src="{% static 'microblog/logo.png' %}" alt="Microblog" /></a>
+            </div>
+            <div class="nav-search">
+                <input type="search" name="search" placeholder="Search. . ."/>
+                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
+            </div>
+            {% if user.is_authenticated %}
+            <span>Logged in as {{ user.username }}.</span>
+            <a href="{% url 'logout' %}" class="header-link buttn">
+                Logout
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="header-link buttn"><div >
+                Log in
+            </div></a>
+            <a href="register.html" class="header-link buttn"><div >
+                Register
+            </div></a>
+            {% endif %}
+            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu">
+                <div class="sprite sprite-menu"></div>Menu
+            </a>
+        </div>
+    </header>
+
+    {% block main %}
+          test123
+    {% endblock %}
+
+    <footer class="centered-content">
+        <p>
+            @MatijaKljun ~~~ Copyright (c) 2016 <a href="https://en.wikipedia.org/wiki/Fair_use#Fair_use_and_parody">Fair use Parody please dont sue</a>
+        </p>
+    </footer>
+
+    <script type="text/javascript" src=""></script>
+</body>
+</html>

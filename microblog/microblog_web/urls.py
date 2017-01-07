@@ -21,4 +21,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^profile/(?P<id>[0-9]+)/$', views.user_profile, name='user_profile'),
+    url(r'^login', views.login_page, name='login'),
+    url(r'^logout', views.logout_page, name='logout'),
 ]
