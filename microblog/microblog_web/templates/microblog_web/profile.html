@@ -1,90 +1,34 @@
+{% extends "microblog_web/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<title>Microblog</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="{% static 'microblog/main.css' %}">
-<body>
-    <header>
-        <div class="nav-bar">
-            <div class="nav-logo">
-                <a href="home.html"><img src="img/logo.png" alt="Microblog" /></a>
-            </div>
-            <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."/>
-                <a href="profile.html" ><div class="sprite sprite-search search-buttn" ></div></a>
-            </div>
-            <a href="index.html" class="header-link buttn"><div >
-                Sing out
-            </div></a>
-            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="show-menu"><div>
-                <div class="sprite sprite-menu"></div>Menu
-            </div></a>
-        </div>
-    </header>
 
-    <div id="dropdown-menu">
-        <div class="container-menu">
-            <div class="menu-search">
-                <input type="search" name="search" placeholder="Search. . ." />
-                <a href="home.html" ><div class="sprite sprite-search search-buttn" ></div></a>
-            </div>
-            <a href="index.html" class="menu-singout"><div class="buttn">
-                Sing out
-            </div></a>
-        </div>
-    </div>
-
+{% block main %}
     <div class="centered-content">
         <div class="profile-site-container">
             <div class="profile-site">
                     <div class="cover-image">
-                        <img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo" />
+                        <img class="cover-image" src="{% static 'microblog/img/cover-image.jpg' %}" alt="cover photo" />
                     </div>
                     <div class="profile-image-div">
-                        <img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile picture" />
+                        <img class="profile-image" src="{% static 'microblog/img/profile-image.jpg' %}" alt="profile picture" />
                     </div>
-                    <h1 class="profile-name">{{user.username}}</h1>
+                    <h1 class="profile-name">{{profile.displayName}} ({{profile.user.username}})</h1>
                     <div class="profile-desc">
                         <div class="profile-tags">
                             <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
                             <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                         </div>
                         <div class="profile-bio">
-                            <p>Živijo moje ime je Janez Novak! <br/> Pozdravljeni na mojem microblogu, preberite moje objave in uživajte! <br/>
-                            Obožujem latinčino in kužke, še posebej Mopse. <br/> Vale!</p>
+                            <p>
+                                {{profile.description}}
+                            </p>
                         </div>
                     </div>
             </div>
             <div class="profile-posts">
-                    {% for post in posts %}
-                        <article class="post">
-                            <div class="cover-image"><img class="cover-image" src="img/users/janez/cover-image.jpg" alt="cover photo"></div>
-                            <div class="profile-image-div"><img class="profile-image" src="img/users/janez/profile-image.jpg" alt="profile photo"></div>
-                            <h2 class="profile-name">{{post.user}}</h2>
-                            <div class="post-text">
-                                <p>{{post.content}}</p>
-                            </div>
-                            <div class="tags">
-                                <a href="https://goo.gl/maps/HKnJB2YMALq">
-                                    <span class="buttn">
-                                        <span class="sprite sprite-location"></span>
-                                        Location
-                                    </span>
-                                </a>
-                            </div>
-                        </article>
-                    {% endfor %}
+                {% for post in posts %}
+                    {% include 'microblog_web/post.html' %}
+                {% endfor %}
             </div>
         </div>
     </div>
-    <footer class="centered-content">
-        <p>
-            @MatijaKljun ~~~ Copyright (c) 2016 <a href="https://en.wikipedia.org/wiki/Fair_use#Fair_use_and_parody">Fair use Parody please dont sue</a>
-        </p>
-    </footer>
-
-    <script type="text/javascript" src="js/main.js"></script>
-</body>
-</html>
+{% endblock %}

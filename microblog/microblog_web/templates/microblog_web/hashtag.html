@@ -1,0 +1,20 @@
+{% extends "microblog_web/base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="centered-content">
+        <div class="main-container">
+            <div class="newsfeed">
+                <div class="posts" id="newsfeed"> <!-- TODO spremeni css tudi za izpis search.html -->
+                    {% if not posts %}
+                        Ni objav s tem hastagom <!-- TODO izpis napake -->
+                    {% else %}
+                        {% for post in posts %}
+                            {% include 'microblog_web/post.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

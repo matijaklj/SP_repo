@@ -1,0 +1,35 @@
+{% extends "microblog_web/base.html" %}
+{% load static %}
+
+{% block main %}
+<div class="container-middle">
+    <div class="login-div">
+        <div class="login-form">
+            <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            <label for="register_describtion">Please insert your info below and register to our microblog <br/> (*Marked fields are required!)</label>
+
+            <form action="/microblog/register" method="POST">
+                {% csrf_token %}
+                <label for="email">Email*: </label>
+                <input id="username" type="text" name="email" required/>
+
+                <label for="username">Username*: </label>
+                <input id="username" type="text" name="username" required/>
+
+                <label for="displayName">Display name: </label>
+                <input id="displayName" type="text" name="displayName"/>
+
+                <label for"password">Password*: </label>
+                <input id="password" type="password" name="password1" required/>
+                <label for"password">Repeat password*: </label>
+                <input id="password" type="password" name="password2" required/>
+
+                <input class="login-submit" type="submit" value="Register"/>
+            </form>
+            {% if error %}
+                <label for="error">{{error}}</label>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
