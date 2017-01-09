@@ -76,6 +76,11 @@ def user_profile(request, id):
     profile = Profile.objects.get(user__pk = id)
     posts = Post.objects.filter(profile=profile).order_by('-pub_date')
 
+    if request.user.is_authenticated:
+        follow = Follow.objects.get(user1=request.user, user2=profile.user)
+        if follow:
+            context['followed'] = True
+
     context['profile'] = profile
     context['posts'] = posts
 
@@ -191,3 +196,7 @@ def hashtag(request, ht):
 
 
     return render(request, 'microblog_web/hashtag.html', context)
+
+def followuser(request, id):
+
+    return HttpResponseRedirect('/microblog/profile/' + str(id))

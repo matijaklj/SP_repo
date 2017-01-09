@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^register', views.register_page, name='register'),
     url(r'^newpost', views.newpost, name='newpost'),
     url(r'^hashtag/([\w]+)', views.hashtag),
+    url(r'^follow/(?P<id>[0-9]+)/$', views.followuser, name='follow'),
 ]

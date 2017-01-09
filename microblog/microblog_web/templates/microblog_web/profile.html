@@ -11,7 +11,17 @@
                     <div class="profile-image-div">
                         <img class="profile-image" src="{% static 'microblog/img/profile-image.jpg' %}" alt="profile picture" />
                     </div>
-                    <h1 class="profile-name">{{profile.displayName}} ({{profile.user.username}})</h1>
+                    <div class="row">
+                        <h1 class="profile-name col-sm-5">{{profile.displayName}} ({{profile.user.username}})</h1>
+                        {% if user.is_authenticated %}
+                            {% if followed %}
+                                <button type="button" class="btn btn-default  col-sm-2 col-sm-offset-3" href="{% url 'follow' profile.user.id %} %}">Unfollow</button>
+                            {% else %}
+                                <button type="button" class="btn btn-success  col-sm-2 col-sm-offset-3" href="{% url 'follow' profile.user.id %}">Follow</button>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
                     <div class="profile-desc">
                         <div class="profile-tags">
                             <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>

@@ -6,8 +6,12 @@
     <div class="login-div">
         <div class="login-form">
             <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            {% if error %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <label for="error">{{error}}</label>
+                </div>
+            {% endif %}
             <label for="register_describtion">Please insert your info below and register to our microblog <br/> (*Marked fields are required!)</label>
-
             <form action="/microblog/register" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -31,9 +35,6 @@
 
                 <input class="btn btn-primary pull-right" type="submit" value="Register"/>
             </form>
-            {% if error %}
-                <label for="error">{{error}}</label>
-            {% endif %}
         </div>
     </div>
 </div>

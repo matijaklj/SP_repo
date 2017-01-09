@@ -6,6 +6,11 @@
     <div class="login-div">
         <div class="login-form">
             <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            {% if error %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong> <label for="error">{{error}}</label>
+                </div>
+            {% endif %}
             <form action="/microblog/login" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
@@ -20,9 +25,6 @@
 
                 <input class="btn btn-primary pull-right" type="submit" value="Log in"/>
             </form>
-            {% if error %}
-                <label for="error">{{error}}</label>
-            {% endif %}
         </div>
     </div>
 </div>
