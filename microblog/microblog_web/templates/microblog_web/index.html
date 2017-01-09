@@ -14,34 +14,22 @@
                     <div class="profile-image-div">
                         <img class="profile-image" src="{% static profile.profileImage %}" alt="profile picture" />
                     </div>
-                    <a href="{% url 'myProfile' %}"><h2 class="profile-name">{{profile.displayName}}</h2></a>
+                    <a href="{% url 'myProfile' %}"><h2 class="profile-name">{{profile.displayName | upper}}</h2></a>
                     <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
                     <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
                 </div>
             </div>
             <div class="newsfeed">
-                <div class="new-post" id="new-post" {% if not user.is_authenticated %}
-                style="display: none;"
-                {% endif %}>
-                    <div class="new-post-form">
-                        <form id="newpost" action="/microblog/newpost" method="POST">
-                            {% csrf_token %}
+                <div class="new-post" {% if not user.is_authenticated %} style="display: none;" {% endif %}>
+                    <form id="newpost" action="/microblog/newpost" method="POST">
+                        {% csrf_token %}
+                        <textarea class="form-control" rows="3" id="post-input" name="content"></textarea> <!-- TODO dodaj gumbe za dodajanje lokacije, slike ali linka!! -->
 
-                            <textarea form="newpost" id="post-input" name="content" rows="5" cols="40"></textarea>
-                            <input class="submit-post buttn" type="submit" value="Post">
-<!--
-                        <span class="post-addition">
-                            <span id="add-location" class="buttn" onclick="getLocation()" >add location</span>
-                            <span  class="buttn">add image</span>
-                            <span class="buttn">add link</span>
-                        </span>
-                        <span id="new-post-tags">
+                        <div class="clearfix">
+                            <input class="btn btn-primary pull-right" type="submit" value="Post"/>
+                        </div>
 
-                        </span>
--->
-                        </form>
-                    </div>
-
+                    </form>
                 </div>
                 <div class="posts" id="newsfeed">
                     {% for post in posts %}
@@ -49,13 +37,12 @@
                     {% endfor %}
                 </div>
             </div>
-
             <div class="trending">
                 <div class="trending-box">
                     <h4>Trending:</h4>
                     <ul>
                         {% for hashtag in hashtags %}
-                            <li class="buttn"><a href="/microblog/hashtag/{{hashtag.name}}">#{{hashtag.name}}</a></li>
+                            <li class="btn btn-info"><a href="/microblog/hashtag/{{hashtag.name}}">#{{hashtag.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -64,3 +51,13 @@
         </div>
     </div>
 {% endblock %}
+<!--
+                    <span class="post-addition">
+                        <span id="add-location" class="buttn" onclick="getLocation()" >add location</span>
+                        <span  class="buttn">add image</span>
+                        <span class="buttn">add link</span>
+                    </span>
+                    <span id="new-post-tags">
+
+                    </span>
+-->

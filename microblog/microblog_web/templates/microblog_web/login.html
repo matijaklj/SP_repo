@@ -8,13 +8,17 @@
             <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
             <form action="/microblog/login" method="POST">
                 {% csrf_token %}
-                <label for="username">Email or username: </label>
-                <input id="username" type="text" name="username" required/>
+                <div class="form-group">
+                    <label for="username">Email or username: </label>
+                    <input id="username" class="form-control" type="text" name="username" required/>
+                </div>
 
-                <label for"password">Password: </label>
-                <input id="password" type="password" name="password" required/>
+                <div class="form-group">
+                    <label for"password">Password: </label>
+                    <input id="password" class="form-control" type="password" name="password" required/>
+                </div>
 
-                <input class="login-submit" type="submit" value="Log in"/>
+                <input class="btn btn-primary pull-right" type="submit" value="Log in"/>
             </form>
             {% if error %}
                 <label for="error">{{error}}</label>

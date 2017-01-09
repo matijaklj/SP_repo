@@ -7,7 +7,8 @@
 <!--<noscript>
   <meta http-equiv="refresh" content="0; url=home-noscript.html">
 </noscript>-->
-<link rel="stylesheet" href="{% static 'microblog/main.css' %}">
+<link rel="stylesheet" href="{% static 'microblog/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
 
 <body>
     <div id="dropdown-menu">
@@ -41,14 +42,14 @@
             </div>
             {% if user.is_authenticated %}
             <span>Logged in as {{ user.username }}.</span>
-            <a href="{% url 'logout' %}" class="header-link buttn">
+            <a href="{% url 'logout' %}" class="header-link btn btn-default">
                 Logout
             </a>
             {% else %}
-            <a href="{% url 'login' %}" class="header-link buttn"><div >
+            <a href="{% url 'login' %}" class="header-link btn btn-default"><div >
                 Log in
             </div></a>
-            <a href="{% url 'register' %}" class="header-link buttn"><div >
+            <a href="{% url 'register' %}" class="header-link btn btn-default"><div >
                 Register
             </div></a>
             {% endif %}
@@ -69,5 +70,6 @@
     </footer>
 
     <script type="text/javascript" src=""></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 </body>
 </html>

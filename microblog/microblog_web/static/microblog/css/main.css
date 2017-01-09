@@ -318,6 +318,8 @@ div .cover-image {
     padding-left: 140px;
     padding-top: 10px;
 
+    font-size: 2em;
+
     font-weight: bold;
 }
 
@@ -439,7 +441,7 @@ div .cover-image {
     margin-bottom: 10px;
 
 }
-
+/*
 .new-post form {
     display: flex;
     flex-direction: column;
@@ -473,6 +475,15 @@ form .submit-post {
 
     padding: 5px 20px 5px 20px;
 
+}
+*/
+
+.new-post form {
+    padding: 8px;
+}
+
+.new-post form textarea {
+    margin-bottom: 8px;
 }
 
 #post-input {

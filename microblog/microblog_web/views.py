@@ -4,8 +4,8 @@ from django.urls import reverse
 from datetime import datetime, timedelta
 from django.db.models import Count
 
-from django.contrib.auth import authenticate, login, logout, models
-
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
 from .models import Post, Profile, Follow, Hashtag, Post_hashtag
 from .forms import LoginForm, RegisterForm, NewPostForm
 
@@ -127,15 +127,19 @@ def register_page(request):
 
                     login(request, user)
 
-                    Follow.objects.create(request.user, request.user)
+                    Follow.objects.create(user1=request.user, user2=request.user)
 
-                    return HttpResponseRedirect('/microblog')
+                    return HttpResponseRedirect('/microblog/login')
                 except Exception as e:
                     raise
                 else:
                     pass
-
-        return HttpResponseRedirect('/microblog')
+            else:
+                context['error'] = "Passwords must match!!!"
+        else:
+            context['error'] = "Form is not valid"
+        #return HttpResponseRedirect('/microblog')
+    # TODO show errors if not successful !!!
 
     return render(request, 'microblog_web/register.html', context)
 

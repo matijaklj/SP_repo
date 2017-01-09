@@ -8,7 +8,7 @@
     <div class="profile-image-div">
         <img class="profile-image" src="{% static post.profile.profileImage %}" alt="profile picture" />
     </div>
-    <h2 class="profile-name">{{post.profile.displayName | upper}}</h2>
+    <h2 class="profile-name"><a href="/microblog/profile/{{post.profile.user.id}}">{{post.profile.displayName | upper}}</a></h2>
     <div class="post-text">
 
             {{post.content|editpost}}
