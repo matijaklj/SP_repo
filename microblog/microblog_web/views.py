@@ -7,11 +7,24 @@ from django.db.models import Count
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import Post, Profile, Hashtag #, Post_hashtag, Follow
-from .forms import LoginForm, RegisterForm, NewPostForm, SearchForm, ProfileForm
+from .forms import LoginForm, RegisterForm, NewPostForm, SearchForm, ProfileForm, DeletePost, DeleteProfile
 
 from django.utils.translation import ugettext_lazy as _
 
 def index(request):
+    """
+    The landing page
+
+    This is the landing page of the microblog.
+    If the user is loged in it display post from users you follow and details about your profile.
+    If the user is not loged in it display the most actual posts.
+
+    It also displays actual/trending hastags.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
+
     context = {}
 
     context['hashtags'] = Hashtag.get_trending()
@@ -24,20 +37,24 @@ def index(request):
 
     context['posts'] = posts
     return render(request, 'microblog_web/index.html', context)
-"""
-def my_profile(request): # TODO to je kr neki preusmeri na profile/{this.user.id} al neki
-    context = {}
-    profile = Profile.objects.get(user = request.user)
-    posts = Post.objects.filter(profile = profile).order_by('-pub_date')
 
-    context['profile'] = profile
-    context['posts'] = posts
-
-    return render(request, 'microblog_web/profile.html', context)
-"""
 def user_profile(request, id):
+    """
+    The user profile page
+
+    This is the profile page of the user.
+    It shows posts and details about the profile.
+
+    If the user is loged in you can follow the profile or unfollow.
+
+    Keyword arguments:
+        - request -- the django requst object
+        - id -- the id of the user, whose profile its displayed
+    """
     context = {}
-    context['profile'] = Profile.objects.get(user=request.user)
+
+    if request.user.is_authenticated:
+        context['profile'] = Profile.objects.get(user=request.user)
 
     profile = Profile.objects.get(user__pk = id)
     posts = Post.objects.filter(profile=profile).order_by('-pub_date')
@@ -53,6 +70,14 @@ def user_profile(request, id):
     return render(request, 'microblog_web/profile.html', context)
 
 def login_page(request):
+    """
+    The login page
+
+    This is where you can login in the microblog.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     context = {}
 
     if request.method == 'POST':
@@ -74,10 +99,28 @@ def login_page(request):
     return render(request, 'microblog_web/login.html', context)
 
 def logout_page(request):
+    """
+    The logout page
+
+    This is where you logout, after you get redirected to the landing page.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     logout(request)
     return HttpResponseRedirect('/microblog')
 
 def register_page(request):
+    """
+    The register page
+
+    This is where you register to the microblog.
+    The filled form is posted and parsed here.
+    If the form is invalid or the input Incorrect, some error is returned.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     context = {}
 
     if request.method == 'POST':
@@ -112,6 +155,14 @@ def register_page(request):
     return render(request, 'microblog_web/register.html', context)
 
 def newpost(request):
+    """
+    This is where you post a new post object to the microblog.
+    Here we parse the form, get the content of the post and add hashtags
+    if they are in the text.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     if not request.method == 'POST':
         return HttpResponseRedirect('/microblog')
 
@@ -133,24 +184,62 @@ def newpost(request):
     return HttpResponseRedirect('/microblog')
 
 def hashtag_search(request, hashtag):
+    """
+    This is where you search posts with a hashtag.
+    It shows posts with the hashtag present in the content of the post.
+
+    Keyword arguments:
+        - request -- the django requst object
+        - hashtag -- the name of the hashtag
+    """
     context = {}
-    context['profile'] = Profile.objects.get(user=request.user)
+
+    if request.user.is_authenticated:
+        context['profile'] = Profile.objects.get(user=request.user)
+
     context['posts'] = Post.objects.filter(hashtags__name=hashtag)
 
     return render(request, 'microblog_web/hashtag.html', context)
 
 def followuser(request, id):
+    """
+    This is where you follow another user.
+    The user with the id is added to the following of the current user.
+
+    Keyword arguments:
+        - request -- the django requst object
+        - id -- the id of the user you want to follow
+    """
     profile = Profile.objects.get(user=request.user)
     Profile.follow(self=profile, id=id)
     return HttpResponseRedirect('/microblog/profile/' + str(id))
 
 def search(request, search_str):
+    """
+    The search page
+
+    This is where you can search through posts with a keyword.
+
+    Keyword arguments:
+        - request -- the django requst object
+        - search_str -- the keyword by which you want to search
+    """
     context = {}
-    context['profile'] = Profile.objects.get(user=request.user)
+
+    if request.user.is_authenticated:
+        context['profile'] = Profile.objects.get(user=request.user)
+
     context['posts'] = Post.objects.filter(content__icontains=search_str)
     return render(request, 'microblog_web/search.html', context)
 
 def posts_search(request):
+    """
+    This is where you post the search form, get the search keyword and redirect to
+    the search page.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     if request.method == 'POST':
         form = SearchForm(request.POST)
         if form.is_valid():
@@ -160,7 +249,16 @@ def posts_search(request):
     return HttpResponseRedirect('/microblog')
 
 def settings(request):
+    """
+    The settings page
 
+    This is where you can edit information about your profile.
+    You can change the language of the website.
+    There is also an option to delete your profile.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
     if not request.user.is_authenticated:
         return  HttpResponseRedirect('/microblog/')
     else:
@@ -173,10 +271,18 @@ def settings(request):
                 print(form_profile.coverImage)
                 profile.description = form_profile.description
                 profile.displayName = form_profile.displayName
-                if form_profile.profileImage:
+                try:
                     profile.profileImage = request.FILES['profileImage']
-                if form_profile.coverImage:
+                except Exception as e:
+                    pass
+                else:
+                    pass
+                try:
                     profile.coverImage = request.FILES['coverImage']
+                except Exception as e:
+                    pass
+                else:
+                    pass
 
                 profile.save()
                 #print(form_profile.user.id)
@@ -187,3 +293,36 @@ def settings(request):
         context['EditProfile'] = ProfileForm(instance=profile) #EditProfileForm()
         context['profile'] = profile
         return render(request, 'microblog_web/settings.html', context)
+
+def delete_profile(request):
+    """
+    This is where you can delete your profile.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
+    if request.method == 'POST':
+        form = DeleteProfile(request.POST)
+        if form.is_valid():
+            profile_id = form.cleaned_data['profile_id']
+            profile = Profile.objects.get(id=profile_id)
+            Profile.delete(profile)
+            logout(request)
+
+    return HttpResponseRedirect('/microblog')
+
+def delete_post(request):
+    """
+    This is where you can delete your post,
+    or if you are a superuser you can delete any post.
+
+    Keyword arguments:
+        - request -- the django requst object
+    """
+    if request.method == 'POST':
+        form = DeletePost(request.POST)
+        if form.is_valid():
+            post_id = form.cleaned_data['post_id']
+            Post.objects.get(id=post_id).delete()
+
+    return HttpResponseRedirect('/microblog')

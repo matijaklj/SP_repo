@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 00:14+0000\n"
+"POT-Creation-Date: 2017-01-14 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: microblog_web/models.py:26
+#: microblog_web/models.py:31
 #: microblog_web/templates/microblog_web/register.html:27
 msgid "Display name"
 msgstr "Prikazno ime"
 
-#: microblog_web/models.py:27
+#: microblog_web/models.py:32
 msgid "Description"
 msgstr "Opis"
 
-#: microblog_web/models.py:29
+#: microblog_web/models.py:34
 msgid "Cover image:"
 msgstr "Pokrovna slika"
 
-#: microblog_web/models.py:30
+#: microblog_web/models.py:35
 msgid "Profile image:"
 msgstr "Profilna slika"
 
@@ -73,12 +73,23 @@ msgstr "Registriraj se"
 msgid "Copyright"
 msgstr "Avtorske pravice"
 
-#: microblog_web/templates/microblog_web/index.html:19
+#: microblog_web/templates/microblog_web/hashtag.html:12
+#: microblog_web/templates/microblog_web/login.html:12
+#: microblog_web/templates/microblog_web/register.html:12
+#: microblog_web/templates/microblog_web/search.html:12
+msgid "Error"
+msgstr "Napaka"
+
+#: microblog_web/templates/microblog_web/hashtag.html:12
+msgid "There are no posts with this hashtag."
+msgstr "Ni objav z to značko."
+
+#: microblog_web/templates/microblog_web/index.html:18
 #: microblog_web/templates/microblog_web/profile.html:28
 msgid "followers"
 msgstr "sledilci"
 
-#: microblog_web/templates/microblog_web/index.html:20
+#: microblog_web/templates/microblog_web/index.html:19
 #: microblog_web/templates/microblog_web/profile.html:29
 msgid "following"
 msgstr "sledeči"
@@ -95,11 +106,6 @@ msgstr "Objavi"
 msgid "Trending"
 msgstr "Aktualno"
 
-#: microblog_web/templates/microblog_web/login.html:12
-#: microblog_web/templates/microblog_web/register.html:12
-msgid "Error"
-msgstr "Napaka"
-
 #: microblog_web/templates/microblog_web/login.html:18
 #: microblog_web/templates/microblog_web/register.html:23
 msgid "Username"
@@ -110,7 +116,13 @@ msgstr "Uporabniško ime"
 msgid "Password"
 msgstr "Geslo"
 
-#: microblog_web/templates/microblog_web/post.html:40
+#: microblog_web/templates/microblog_web/post.html:29
+#: microblog_web/templates/microblog_web/profile.html:41
+#: microblog_web/templates/microblog_web/settings.html:35
+msgid "Delete"
+msgstr "Zbriši"
+
+#: microblog_web/templates/microblog_web/post.html:45
 msgid "Location"
 msgstr "Lokacija"
 
@@ -138,6 +150,10 @@ msgstr "Elektronska pošta"
 msgid "Repeat password"
 msgstr "Ponovite geslo"
 
+#: microblog_web/templates/microblog_web/search.html:12
+msgid "No post found."
+msgstr "Ni najdenih objav."
+
 #: microblog_web/templates/microblog_web/settings.html:10
 msgid "Language:"
 msgstr "Jezik:"
@@ -154,23 +170,19 @@ msgstr "Uredi"
 msgid "Delete profile:"
 msgstr "Zbriši profil:"
 
-#: microblog_web/templates/microblog_web/settings.html:33
-msgid "Delete"
-msgstr "Zbriši"
-
-#: microblog_web/views.py:68 microblog_web/views.py:71
+#: microblog_web/views.py:93 microblog_web/views.py:96
 msgid "Incorrect username or password!"
 msgstr "Napačno uporabniško ime ali geslo!"
 
-#: microblog_web/views.py:102 microblog_web/views.py:105
+#: microblog_web/views.py:145 microblog_web/views.py:148
 msgid "Username is already taken!"
 msgstr "Uporabniško ime je že zasedeno!"
 
-#: microblog_web/views.py:108
+#: microblog_web/views.py:151
 msgid "Passwords must match!!!"
 msgstr "Gesla se morata ujemati!!!"
 
-#: microblog_web/views.py:110
+#: microblog_web/views.py:153
 msgid "Please fill all the marked fields"
 msgstr "Prosim izpolnite vsa označena polja"
 

@@ -12,8 +12,10 @@ def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
+"""
 class MyModel(models.Model):
     upload = models.FileField(upload_to=user_directory_path)
+"""
 
 class ProfileManager(models.Manager):
     def create_profile(self, user, displayName):
@@ -22,6 +24,9 @@ class ProfileManager(models.Manager):
         return profile
 
 class Profile(models.Model):
+    """
+    profile model
+    """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     displayName = models.CharField( max_length=30, blank=True, verbose_name=_("Display name"), default=User.username)
     description = models.CharField(max_length=150, default='', blank=True, verbose_name=_('Description'))
@@ -33,11 +38,24 @@ class Profile(models.Model):
     objects = ProfileManager()
 
     def get_newsfeed(self):
+        """
+        returns post from profiles that the profile self follows
+
+        Keyword arguments:
+            - self -- the profile object
+        """
         follow_profiles = self.following.all()
         #print({follow_profiles})
         return Post.objects.filter(profile__in=follow_profiles).order_by('-pub_date')
 
     def is_following(self, profile):
+        """
+        returns True if Profile self follows Profile profile else False
+
+        Keyword arguments:
+            - self -- the profile object
+            - profile -- the profile object
+        """
         s_fol = self.following.all()
         for p in s_fol:
             if p == profile:
@@ -45,6 +63,13 @@ class Profile(models.Model):
         return False
 
     def follow(self, id):
+        """
+        adds the profile with the id (id) to the following profiles of self
+
+        Keyword arguments:
+            - self -- the profile object
+            - id -- the id of the user of profile
+        """
         profile1 = self
         profile2 = Profile.objects.get(user__id=id)
         if profile2:
@@ -58,6 +83,14 @@ class Profile(models.Model):
         else:
             return False
 
+    def delete(self):
+        """
+        deletes Profile object self
+
+        Keyword arguments:
+            - self -- the profile object
+        """
+        User.objects.get(id=self.user.id).delete()
 
 class PostManager(models.Manager):
     def create_post(self, profile, content, lat, lon):
@@ -80,6 +113,9 @@ class PostManager(models.Manager):
         return post
 
 class Post(models.Model):
+    """
+    post model
+    """
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     content = models.TextField()
     pub_date = models.DateTimeField(default=datetime.now)
@@ -89,10 +125,18 @@ class Post(models.Model):
     objects = PostManager()
 
 class Hashtag(models.Model):
+    """
+    hashtag model
+    """
     name = models.CharField(max_length=100, unique=True)
 
     def get_trending():
+        """
+        deletes Profile object self
 
+        Keyword arguments:
+            - self -- the profile object
+        """
         posts_recent = Post.objects.filter(pub_date__gte = datetime.now() - timedelta(days=2))
         hashtags_list = []
 

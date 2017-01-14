@@ -22,7 +22,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    #url(r'^profile$', views.my_profile, name='myProfile'),
     url(r'^profile/(?P<id>[0-9]+)/$', views.user_profile, name='profile'),
     url(r'^login', views.login_page, name='login'),
     url(r'^logout', views.logout_page, name='logout'),
@@ -33,4 +32,6 @@ urlpatterns = [
     url(r'^search/([\w]+)', views.search),
     url(r'^search$', views.posts_search, name='search'),
     url(r'^settings$', views.settings, name='settings'),
+    url(r'^delete/profile$', views.delete_profile, name='delete_profile'),
+    url(r'^delete/post$', views.delete_post, name='delete_post'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

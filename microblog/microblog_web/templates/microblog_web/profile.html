@@ -34,6 +34,13 @@
                             </p>
                         </div>
                     </div>
+                    {% if user.is_superuser %}
+                        <form class="delete-user" action="{% url 'delete_profile' %}" method="post">
+                            {% csrf_token %}
+                            <input class="hidden" type="text" name="profile_id" value="{{userprofile.id}}"/>
+                            <input class="btn btn-danger" type="submit" value="{% blocktrans %}Delete{% endblocktrans %}">
+                        </form>
+                    {% endif %}
             </div>
             <div class="profile-posts">
                 {% for post in posts %}

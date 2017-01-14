@@ -18,7 +18,7 @@
             </div>
             <div class="well well-sm">
                 <h4>{% blocktrans %}Edit profile:{% endblocktrans %}</h4>
-                <form enctype="multipart/form-data"  class="edit-profile" action="/microblog/settings" method="post">
+                <form enctype="multipart/form-data"  class="edit-profile" action="{% url 'settings' %}" method="post">
                     {% csrf_token %}
                     {{ EditProfile }}
                     <div class="clearfix offset">
@@ -29,7 +29,9 @@
             </div>
             <div class="well well-sm">
                 <h4>{% blocktrans %}Delete profile:{% endblocktrans %}</h4>
-                <form class="delete-user" action="/microblog/profile/{{user.id}}" method="post">
+                <form class="delete-user" action="{% url 'delete_profile' %}" method="post">
+                    {% csrf_token %}
+                    <input class="hidden" type="text" name="profile_id" value="{{profile.id}}"/>
                     <input class="btn btn-danger" type="submit" value="{% blocktrans %}Delete{% endblocktrans %}">
                 </form>
             </div>

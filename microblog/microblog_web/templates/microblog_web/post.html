@@ -21,12 +21,14 @@
               </button>
               <ul class="dropdown-menu">
                 <li>{{post.pub_date}}</li>
-                {% if user == post.profile.user %}
+                {% if user == post.profile.user or user.is_superuser %}
                     <li role="separator" class="divider"></li>
-                    <form class="delete-post" action="" method="post">
-                        <!-- TODO delete post -->
+                    <form class="delete-post" action="{% url 'delete_post' %}" method="post">
+                        {% csrf_token %}
+                        <input class="hidden" type="text" name="post_id" value="{{post.id}}"/>
+                        <li><button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>{% blocktrans %}Delete{% endblocktrans %}</button></li>
                     </form>
-                    <li><a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</a></li>
+
                 {% endif %}
 
               </ul>

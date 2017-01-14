@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Views &#8212; Microblog 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Microblog 1.0 documentation" href="../index.html" />
+    <link rel="next" title="Forms" href="forms.html" />
+    <link rel="prev" title="Models" href="models.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-microblog_web.views">
+<span id="views"></span><h1>Views<a class="headerlink" href="#module-microblog_web.views" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="microblog_web.views.delete_post">
+<code class="descclassname">microblog_web.views.</code><code class="descname">delete_post</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.delete_post" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you can delete your post,
+or if you are a superuser you can delete any post.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.delete_profile">
+<code class="descclassname">microblog_web.views.</code><code class="descname">delete_profile</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.delete_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you can delete your profile.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.followuser">
+<code class="descclassname">microblog_web.views.</code><code class="descname">followuser</code><span class="sig-paren">(</span><em>request</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.followuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you follow another user.
+The user with the id is added to the following of the current user.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+<li>id &#8211; the id of the user you want to follow</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.hashtag_search">
+<code class="descclassname">microblog_web.views.</code><code class="descname">hashtag_search</code><span class="sig-paren">(</span><em>request</em>, <em>hashtag</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.hashtag_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you search posts with a hashtag.
+It shows posts with the hashtag present in the content of the post.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+<li>hashtag &#8211; the name of the hashtag</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.index">
+<code class="descclassname">microblog_web.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The landing page</p>
+<p>This is the landing page of the microblog.
+If the user is loged in it display post from users you follow and details about your profile.
+If the user is not loged in it display the most actual posts.</p>
+<p>It also displays actual/trending hastags.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.login_page">
+<code class="descclassname">microblog_web.views.</code><code class="descname">login_page</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.login_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>The login page</p>
+<p>This is where you can login in the microblog.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.logout_page">
+<code class="descclassname">microblog_web.views.</code><code class="descname">logout_page</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.logout_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>The logout page</p>
+<p>This is where you logout, after you get redirected to the landing page.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.newpost">
+<code class="descclassname">microblog_web.views.</code><code class="descname">newpost</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.newpost" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you post a new post object to the microblog.
+Here we parse the form, get the content of the post and add hashtags
+if they are in the text.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.posts_search">
+<code class="descclassname">microblog_web.views.</code><code class="descname">posts_search</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.posts_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is where you post the search form, get the search keyword and redirect to
+the search page.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.register_page">
+<code class="descclassname">microblog_web.views.</code><code class="descname">register_page</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.register_page" title="Permalink to this definition">¶</a></dt>
+<dd><p>The register page</p>
+<p>This is where you register to the microblog.
+The filled form is posted and parsed here.
+If the form is invalid or the input Incorrect, some error is returned.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.search">
+<code class="descclassname">microblog_web.views.</code><code class="descname">search</code><span class="sig-paren">(</span><em>request</em>, <em>search_str</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>The search page</p>
+<p>This is where you can search through posts with a keyword.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+<li>search_str &#8211; the keyword by which you want to search</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.settings">
+<code class="descclassname">microblog_web.views.</code><code class="descname">settings</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>The settings page</p>
+<p>This is where you can edit information about your profile.
+You can change the language of the website.
+There is also an option to delete your profile.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="microblog_web.views.user_profile">
+<code class="descclassname">microblog_web.views.</code><code class="descname">user_profile</code><span class="sig-paren">(</span><em>request</em>, <em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#microblog_web.views.user_profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user profile page</p>
+<p>This is the profile page of the user.
+It shows posts and details about the profile.</p>
+<p>If the user is loged in you can follow the profile or unfollow.</p>
+<dl class="docutils">
+<dt>Keyword arguments:</dt>
+<dd><ul class="first last simple">
+<li>request &#8211; the django requst object</li>
+<li>id &#8211; the id of the user, whose profile its displayed</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="models.html" title="previous chapter">Models</a></li>
+      <li>Next: <a href="forms.html" title="next chapter">Forms</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/views.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Matija Kljun.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/modules/views.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
