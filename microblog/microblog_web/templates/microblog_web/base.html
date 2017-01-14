@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html>
@@ -13,50 +14,72 @@
 
 <body>
     <div id="dropdown-menu">
-        <div class="menu-profile">
+        <!--<div class="menu-profile">
             <img class="profile-image" src="" alt="profile picture" />
 
             <a href="profile.html"><h2 class="profile-name">Janez Novak</h2></a>
-            <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
-            <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
+            <div class="tag"><span class="sprite sprite-people"></span><span>168</span></div>
+            <div class="tag"><span class="sprite sprite-people"></span><span>120</span></div>
         </div>
 
         <div class="container-menu">
             <div class="menu-search">
-                <input type="search" name="search" placeholder="Search. . ."/>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+                </div>
             </div>
             <a href="index.html" class="menu-singout"><div class="buttn">
                 Sing out
             </div></a>
-        </div>
+        </div> -->
     </div>
 
     <header>
         <div class="nav-bar">
             <div class="nav-logo">
-                <a href="/microblog"><img src="{% static 'microblog/logo.png' %}" alt="Microblog" /></a>
+                <a href="{% url 'index' %}"><img src="{% static 'microblog/logo.png' %}" alt="Microblog" /></a>
             </div>
             <div class="nav-search">
-                <input type="search" name="search" placeholder="Search. . ."/>
-                <a href="home.html" ><div class="sprite sprite-search search-buttn"></div></a>
+                <form action="{% url 'search' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="{% blocktrans %}Search posts...{% endblocktrans %}" name="search_str">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{% blocktrans %}Search{% endblocktrans %}</button>
+                        </span>
+                    </form>
+                    </div>
+                </form>
             </div>
             {% if user.is_authenticated %}
-            <span>Logged in as {{ user.username }}.</span>
-            <a href="{% url 'logout' %}" class="header-link btn btn-default">
-                Logout
-            </a>
+
+            <div class="dropdown header-link">
+                <button class=" dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                    <img class="little-profile-img" src="/{{ profile.profileImage.url }}">
+                </button>
+                <ul class="dropdown-menu">
+                    <li>{% blocktrans %}Logged in as{% endblocktrans %} {{ user.username }}</li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'profile' id=profile.user.id %}" >{% blocktrans %}Profile{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'settings' %}" >{% blocktrans %}Settings{% endblocktrans %}</a></li>
+                    <li><a href="{% url 'logout' %}" >{% blocktrans %}Logout{% endblocktrans %}</a></li>
+                </ul>
+            </div>
+
             {% else %}
             <a href="{% url 'login' %}" class="header-link btn btn-default"><div >
-                Log in
+                {% blocktrans %}Login{% endblocktrans %}
             </div></a>
             <a href="{% url 'register' %}" class="header-link btn btn-default"><div >
-                Register
+                {% blocktrans %}Register{% endblocktrans %}
             </div></a>
             {% endif %}
-            <a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu">
+            <!--<a href="#" onclick="collapseMenu(event)" class="header-link-colapsed buttn" id="collapse-menu">
                 <div class="sprite sprite-menu"></div>Menu
-            </a>
+            </a>-->
         </div>
     </header>
 
@@ -66,11 +89,20 @@
 
     <footer class="centered-content">
         <p>
-            @MatijaKljun ~~~ Copyright (c) 2016 <a href="https://en.wikipedia.org/wiki/Fair_use#Fair_use_and_parody">Fair use Parody please dont sue</a>
+            @MatijaKljun ~~~ {% blocktrans %}Copyright{% endblocktrans %} (c) 2016
         </p>
+        {% get_available_languages as languages %}
+
+        {% for lang_code, lang_name in languages %}
+          {% language lang_code %}
+            <a href="{% url 'index' %}">{{ lang_name }}</a>
+          {% endlanguage %}
+        {% endfor %}
     </footer>
 
     <script type="text/javascript" src=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'microblog/js/main.js' %}"></script>
 </body>
 </html>

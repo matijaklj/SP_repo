@@ -1,39 +1,40 @@
 {% extends "microblog_web/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block main %}
 <div class="container-middle">
     <div class="login-div">
         <div class="login-form">
-            <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            <a href="{% url 'index' %}"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
             {% if error %}
                 <div class="alert alert-danger">
-                    <strong>Error!</strong> <label for="error">{{error}}</label>
+                    <strong>{% blocktrans %}Error{% endblocktrans %}!</strong> <label for="error">{{error}}</label>
                 </div>
             {% endif %}
-            <label for="register_describtion">Please insert your info below and register to our microblog <br/> (*Marked fields are required!)</label>
-            <form action="/microblog/register" method="POST">
+            <label for="register_describtion">{% blocktrans %}Please insert your info below and register to our microblog{% endblocktrans %} <br/>(*{% blocktrans %}Marked fields are required{% endblocktrans %}!)</label>
+            <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="email">Email*: </label>
+                    <label for="email">{% blocktrans %}Email{% endblocktrans %}*: </label>
                     <input id="username" class="form-control" type="text" name="email" required/>
                 </div>
                 <div class="form-group">
-                    <label for="username">Username*: </label>
+                    <label for="username">{% blocktrans %}Username{% endblocktrans %}*: </label>
                     <input id="username" class="form-control" type="text" name="username" required/>
                 </div>
                 <div class="form-group">
-                    <label for="displayName">Display name: </label>
+                    <label for="displayName">{% blocktrans %}Display name{% endblocktrans %}: </label>
                     <input id="displayName" class="form-control" type="text" name="displayName"/>
                 </div>
                 <div class="form-group">
-                    <label for"password">Password*: </label>
+                    <label for"password">{% blocktrans %}Password{% endblocktrans %}*: </label>
                     <input id="password" class="form-control" type="password" name="password1" required/>
-                    <label for"password">Repeat password*: </label>
+                    <label for"password">{% blocktrans %}Repeat password{% endblocktrans %}*: </label>
                     <input id="password" class="form-control" type="password" name="password2" required/>
                 </div>
 
-                <input class="btn btn-primary pull-right" type="submit" value="Register"/>
+                <input class="btn btn-primary pull-right" type="submit" value="{% blocktrans %}Register{% endblocktrans %}"/>
             </form>
         </div>
     </div>

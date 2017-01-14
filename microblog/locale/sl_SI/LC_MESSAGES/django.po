@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-14 00:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: microblog_web/models.py:26
+#: microblog_web/templates/microblog_web/register.html:27
+msgid "Display name"
+msgstr "Prikazno ime"
+
+#: microblog_web/models.py:27
+msgid "Description"
+msgstr "Opis"
+
+#: microblog_web/models.py:29
+msgid "Cover image:"
+msgstr "Pokrovna slika"
+
+#: microblog_web/models.py:30
+msgid "Profile image:"
+msgstr "Profilna slika"
+
+#: microblog_web/templates/microblog_web/base.html:49
+msgid "Search posts..."
+msgstr "Išči objave..."
+
+#: microblog_web/templates/microblog_web/base.html:51
+msgid "Search"
+msgstr "Išči"
+
+#: microblog_web/templates/microblog_web/base.html:64
+msgid "Logged in as"
+msgstr "Prijavljen kot"
+
+#: microblog_web/templates/microblog_web/base.html:66
+msgid "Profile"
+msgstr "Profil"
+
+#: microblog_web/templates/microblog_web/base.html:67
+#: microblog_web/templates/microblog_web/settings.html:8
+msgid "Settings"
+msgstr "Nastavitve"
+
+#: microblog_web/templates/microblog_web/base.html:68
+msgid "Logout"
+msgstr "Odjava"
+
+#: microblog_web/templates/microblog_web/base.html:74
+#: microblog_web/templates/microblog_web/login.html:27
+msgid "Login"
+msgstr "Prijavi se"
+
+#: microblog_web/templates/microblog_web/base.html:77
+#: microblog_web/templates/microblog_web/register.html:37
+msgid "Register"
+msgstr "Registriraj se"
+
+#: microblog_web/templates/microblog_web/base.html:92
+msgid "Copyright"
+msgstr "Avtorske pravice"
+
+#: microblog_web/templates/microblog_web/index.html:19
+#: microblog_web/templates/microblog_web/profile.html:28
+msgid "followers"
+msgstr "sledilci"
+
+#: microblog_web/templates/microblog_web/index.html:20
+#: microblog_web/templates/microblog_web/profile.html:29
+msgid "following"
+msgstr "sledeči"
+
+#: microblog_web/templates/microblog_web/index.html:31
+msgid "Add location"
+msgstr "Dodaj lokacijo"
+
+#: microblog_web/templates/microblog_web/index.html:34
+msgid "Post"
+msgstr "Objavi"
+
+#: microblog_web/templates/microblog_web/index.html:47
+msgid "Trending"
+msgstr "Aktualno"
+
+#: microblog_web/templates/microblog_web/login.html:12
+#: microblog_web/templates/microblog_web/register.html:12
+msgid "Error"
+msgstr "Napaka"
+
+#: microblog_web/templates/microblog_web/login.html:18
+#: microblog_web/templates/microblog_web/register.html:23
+msgid "Username"
+msgstr "Uporabniško ime"
+
+#: microblog_web/templates/microblog_web/login.html:23
+#: microblog_web/templates/microblog_web/register.html:31
+msgid "Password"
+msgstr "Geslo"
+
+#: microblog_web/templates/microblog_web/post.html:40
+msgid "Location"
+msgstr "Lokacija"
+
+#: microblog_web/templates/microblog_web/profile.html:19
+msgid "Unfollow"
+msgstr "Odjavi se"
+
+#: microblog_web/templates/microblog_web/profile.html:21
+msgid "Follow"
+msgstr "Sledi"
+
+#: microblog_web/templates/microblog_web/register.html:15
+msgid "Please insert your info below and register to our microblog"
+msgstr "Prosimo vas da vpišete vaše podatke in se registrirate na naš microblog"
+
+#: microblog_web/templates/microblog_web/register.html:15
+msgid "Marked fields are required"
+msgstr "Označena polja so obvezna"
+
+#: microblog_web/templates/microblog_web/register.html:19
+msgid "Email"
+msgstr "Elektronska pošta"
+
+#: microblog_web/templates/microblog_web/register.html:33
+msgid "Repeat password"
+msgstr "Ponovite geslo"
+
+#: microblog_web/templates/microblog_web/settings.html:10
+msgid "Language:"
+msgstr "Jezik:"
+
+#: microblog_web/templates/microblog_web/settings.html:20
+msgid "Edit profile:"
+msgstr "Uredi profil:"
+
+#: microblog_web/templates/microblog_web/settings.html:25
+msgid "Edit"
+msgstr "Uredi"
+
+#: microblog_web/templates/microblog_web/settings.html:31
+msgid "Delete profile:"
+msgstr "Zbriši profil:"
+
+#: microblog_web/templates/microblog_web/settings.html:33
+msgid "Delete"
+msgstr "Zbriši"
+
+#: microblog_web/views.py:68 microblog_web/views.py:71
+msgid "Incorrect username or password!"
+msgstr "Napačno uporabniško ime ali geslo!"
+
+#: microblog_web/views.py:102 microblog_web/views.py:105
+msgid "Username is already taken!"
+msgstr "Uporabniško ime je že zasedeno!"
+
+#: microblog_web/views.py:108
+msgid "Passwords must match!!!"
+msgstr "Gesla se morata ujemati!!!"
+
+#: microblog_web/views.py:110
+msgid "Please fill all the marked fields"
+msgstr "Prosim izpolnite vsa označena polja"
+
+#~ msgid "English"
+#~ msgstr "Angleščina"
+
+#~ msgid "Slovenian"
+#~ msgstr "Slovenščina"

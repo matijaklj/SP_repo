@@ -1,29 +1,30 @@
 {% extends "microblog_web/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block main %}
 <div class="container-middle">
     <div class="login-div">
         <div class="login-form">
-            <a href="/microblog"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
+            <a href="{% url 'index' %}"><img class="large-logo" src="{% static 'microblog/logo.png' %}" alt="logo"/></a>
             {% if error %}
                 <div class="alert alert-danger">
-                    <strong>Error!</strong> <label for="error">{{error}}</label>
+                    <strong>{% blocktrans %}Error{% endblocktrans %}!</strong> <label for="error">{{error}}</label>
                 </div>
             {% endif %}
-            <form action="/microblog/login" method="POST">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="username">Email or username: </label>
+                    <label for="username">{% blocktrans %}Username{% endblocktrans %}: </label>
                     <input id="username" class="form-control" type="text" name="username" required/>
                 </div>
 
                 <div class="form-group">
-                    <label for"password">Password: </label>
+                    <label for"password">{% blocktrans %}Password{% endblocktrans %}: </label>
                     <input id="password" class="form-control" type="password" name="password" required/>
                 </div>
 
-                <input class="btn btn-primary pull-right" type="submit" value="Log in"/>
+                <input class="btn btn-primary pull-right" type="submit" value="{% blocktrans %}Login{% endblocktrans %}"/>
             </form>
         </div>
     </div>

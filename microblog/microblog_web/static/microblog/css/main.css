@@ -32,9 +32,9 @@
 }
 .nav-search input {
     width: calc(100% - 20px);
-    height: 25px;
+    /*height: 25px;
 
-    border-radius: 10px;
+    border-radius: 10px;*/
     float: left;
 }
 .header-link {
@@ -320,6 +320,10 @@ div .cover-image {
 
     font-size: 2em;
 
+    font-weight: bold;
+}
+
+.post-name {
     font-weight: bold;
 }
 
@@ -648,7 +652,7 @@ div .my-profile .cover-image {
     display: inline;
     padding-left: 20px;
     margin-bottom: 40px;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
 .profile-site {
@@ -717,4 +721,14 @@ div .my-profile .cover-image {
 
 .hid  {
     visibility: hidden;
+}
+
+.offset {
+    margin-top: 20px;
+}
+
+.little-profile-img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
 }

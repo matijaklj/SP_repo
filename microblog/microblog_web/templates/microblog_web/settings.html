@@ -1,0 +1,38 @@
+{% extends "microblog_web/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 panel panel-default offset">
+            <h3>{% blocktrans %}Settings{% endblocktrans %}:</h3>
+            <div class="well well-sm">
+                <h4>{% blocktrans %}Language:{% endblocktrans %}</h4>
+                {% get_available_languages as languages %}
+
+                {% for lang_code, lang_name in languages %}
+                  {% language lang_code %}
+                    <a href="{% url 'index' %}">{{ lang_name }}</a>
+                  {% endlanguage %}
+                {% endfor %}
+            </div>
+            <div class="well well-sm">
+                <h4>{% blocktrans %}Edit profile:{% endblocktrans %}</h4>
+                <form enctype="multipart/form-data"  class="edit-profile" action="/microblog/settings" method="post">
+                    {% csrf_token %}
+                    {{ EditProfile }}
+                    <div class="clearfix offset">
+                        <input class="btn btn-primary pull-right" type="submit" value="{% blocktrans %}Edit{% endblocktrans %}"/>
+                    </div>
+                </form>
+
+            </div>
+            <div class="well well-sm">
+                <h4>{% blocktrans %}Delete profile:{% endblocktrans %}</h4>
+                <form class="delete-user" action="/microblog/profile/{{user.id}}" method="post">
+                    <input class="btn btn-danger" type="submit" value="{% blocktrans %}Delete{% endblocktrans %}">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

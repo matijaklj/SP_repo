@@ -1,0 +1,22 @@
+{% extends "microblog_web/base.html" %}
+{% load static %}
+
+{% block main %}
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="newsfeed">
+                <div class="posts" id="newsfeed">
+                    {% if not posts %}
+                        <div class="alert alert-warning">
+                            <strong>{% blocktrans %}Error{% endblocktrans %}!</strong> <label for="error">{% blocktrans %}No post found.{% endblocktrans %}</label>
+                        </div>
+                    {% else %}
+                        {% for post in posts %}
+                            {% include 'microblog_web/post.html' %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

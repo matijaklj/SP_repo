@@ -14,18 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
+from django.conf.urls.static import static
 #from django.contrib import admin
 
 from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^profile$', views.my_profile, name='myProfile'),
-    url(r'^profile/(?P<id>[0-9]+)/$', views.user_profile, name='user_profile'),
+    #url(r'^profile$', views.my_profile, name='myProfile'),
+    url(r'^profile/(?P<id>[0-9]+)/$', views.user_profile, name='profile'),
     url(r'^login', views.login_page, name='login'),
     url(r'^logout', views.logout_page, name='logout'),
     url(r'^register', views.register_page, name='register'),
     url(r'^newpost', views.newpost, name='newpost'),
-    url(r'^hashtag/([\w]+)', views.hashtag),
+    url(r'^hashtag/(?P<hashtag>[\w]+)/', views.hashtag_search, name='hashtagSearch'),
     url(r'^follow/(?P<id>[0-9]+)/$', views.followuser, name='follow'),
-]
+    url(r'^search/([\w]+)', views.search),
+    url(r'^search$', views.posts_search, name='search'),
+    url(r'^settings$', views.settings, name='settings'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

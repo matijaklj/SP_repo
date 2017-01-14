@@ -1,5 +1,6 @@
 {% extends "microblog_web/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block main %}
     <div class="row">
@@ -7,7 +8,9 @@
             <div class="newsfeed">
                 <div class="posts" id="newsfeed"> <!-- TODO spremeni css tudi za izpis search.html -->
                     {% if not posts %}
-                        Ni objav s tem hastagom <!-- TODO izpis napake -->
+                        <div class="alert alert-warning">
+                            <strong>{% blocktrans %}Error{% endblocktrans %}!</strong> <label for="error">{% blocktrans %}There are no posts with this hashtag.{% endblocktrans %}</label>
+                        </div>
                     {% else %}
                         {% for post in posts %}
                             {% include 'microblog_web/post.html' %}

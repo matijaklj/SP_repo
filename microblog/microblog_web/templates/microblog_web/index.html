@@ -1,5 +1,6 @@
 {% extends "microblog_web/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block main %}
     <div class="centered-content">
@@ -9,24 +10,28 @@
                 style="visibility: hidden;"
                 {% endif %}>
                     <div class="cover-image">
-                        <img class="cover-image" src="{% static profile.coverImage %}" alt="cover photo" />
+                        <img class="cover-image" src="/{{ profile.coverImage.url }}" alt="cover photo" />
                     </div>
                     <div class="profile-image-div">
-                        <img class="profile-image" src="{% static profile.profileImage %}" alt="profile picture" />
+                        <img class="profile-image" src="/{{ profile.profileImage.url }}" alt="profile picture" />
                     </div>
-                    <a href="{% url 'myProfile' %}"><h2 class="profile-name">{{profile.displayName | upper}}</h2></a>
-                    <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
-                    <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
+                    <a href="{% url 'profile' id=profile.user.id %}"><h2 class="profile-name">{{profile.displayName | upper}}</h2></a>
+                    <div class="tag"><span class="sprite sprite-people"></span><span>168</span>{% blocktrans %}followers{% endblocktrans %}</div>
+                    <div class="tag"><span class="sprite sprite-people"></span><span>120</span>{% blocktrans %}following{% endblocktrans %}</div>
                 </div>
             </div>
             <div class="newsfeed">
                 <div class="new-post" {% if not user.is_authenticated %} style="display: none;" {% endif %}>
-                    <form id="newpost" action="/microblog/newpost" method="POST">
+                    <form id="newpost" action="{% url 'newpost' %}" method="POST">
                         {% csrf_token %}
-                        <textarea class="form-control" rows="3" id="post-input" name="content"></textarea> <!-- TODO dodaj gumbe za dodajanje lokacije, slike ali linka!! -->
+                        <textarea class="form-control" rows="3" id="post-input" name="content"></textarea>
+                        <input id="location_lat" class="hidden" type="text" name="location_lat" value="">
+                        <input id="location_lon" class="hidden" type="text" name="location_lon" value="">
+
+                        <a class="btn btn-primary" onclick="get_location()">{% blocktrans %}Add location{% endblocktrans %}</a>
 
                         <div class="clearfix">
-                            <input class="btn btn-primary pull-right" type="submit" value="Post"/>
+                            <input class="btn btn-primary pull-right" type="submit" value="{% blocktrans %}Post{% endblocktrans %}"/>
                         </div>
 
                     </form>
@@ -39,10 +44,10 @@
             </div>
             <div class="trending">
                 <div class="trending-box">
-                    <h4>Trending:</h4>
+                    <h4>{% blocktrans %}Trending{% endblocktrans %}:</h4>
                     <ul>
                         {% for hashtag in hashtags %}
-                            <li class="btn btn-info"><a href="/microblog/hashtag/{{hashtag.name}}">#{{hashtag.name}}</a></li>
+                            <li class="btn btn-info"><a href="{% url 'hashtagSearch' hashtag=hashtag.name %}">#{{hashtag.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -51,13 +56,3 @@
         </div>
     </div>
 {% endblock %}
-<!--
-                    <span class="post-addition">
-                        <span id="add-location" class="buttn" onclick="getLocation()" >add location</span>
-                        <span  class="buttn">add image</span>
-                        <span class="buttn">add link</span>
-                    </span>
-                    <span id="new-post-tags">
-
-                    </span>
--->

@@ -1,35 +1,36 @@
 {% extends "microblog_web/base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block main %}
     <div class="centered-content">
         <div class="profile-site-container">
             <div class="profile-site">
                     <div class="cover-image">
-                        <img class="cover-image" src="{% static 'microblog/img/cover-image.jpg' %}" alt="cover photo" />
+                        <img class="cover-image" src="/{{ userprofile.coverImage.url }}" alt="cover photo" />
                     </div>
                     <div class="profile-image-div">
-                        <img class="profile-image" src="{% static 'microblog/img/profile-image.jpg' %}" alt="profile picture" />
+                        <img class="profile-image" src="/{{ userprofile.profileImage.url }}" alt="profile picture" />
                     </div>
                     <div class="row">
-                        <h1 class="profile-name col-sm-5">{{profile.displayName}} ({{profile.user.username}})</h1>
+                        <h1 class="profile-name col-sm-7">{{userprofile.displayName}} ({{userprofile.user.username}})</h1>
                         {% if user.is_authenticated %}
                             {% if followed %}
-                                <button type="button" class="btn btn-default  col-sm-2 col-sm-offset-3" href="{% url 'follow' profile.user.id %} %}">Unfollow</button>
+                                <a type="button" class="btn btn-default  col-sm-2 col-sm-offset-1" href="{% url 'follow' userprofile.user.id %}">{% blocktrans %}Unfollow{% endblocktrans %}</a>
                             {% else %}
-                                <button type="button" class="btn btn-success  col-sm-2 col-sm-offset-3" href="{% url 'follow' profile.user.id %}">Follow</button>
+                                <a type="button" class="btn btn-success  col-sm-2 col-sm-offset-1" href="{% url 'follow' userprofile.user.id %}">{% blocktrans %}Follow{% endblocktrans %}</a>
                             {% endif %}
                         {% endif %}
                     </div>
 
                     <div class="profile-desc">
                         <div class="profile-tags">
-                            <div class="tag"><span class="sprite sprite-people"></span><span>168</span> followers</div>
-                            <div class="tag"><span class="sprite sprite-people"></span><span>120</span> following</div>
+                            <div class="tag"><span class="sprite sprite-people"></span><span>168</span>{% blocktrans %}followers{% endblocktrans %}</div>
+                            <div class="tag"><span class="sprite sprite-people"></span><span>120</span>{% blocktrans %}following{% endblocktrans %}</div>
                         </div>
                         <div class="profile-bio">
                             <p>
-                                {{profile.description}}
+                                {{userprofile.description}}
                             </p>
                         </div>
                     </div>
