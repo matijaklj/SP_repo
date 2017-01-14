@@ -92,38 +92,6 @@ class Profile(models.Model):
         """
         User.objects.get(id=self.user.id).delete()
 
-class PostManager(models.Manager):
-    def create_post(self, profile, content, lat, lon):
-        words = content
-        hashtagSet = {ht[1:] for ht in words.split() if ht.startswith("#")}
-        hashtag_list = []
-        for h in hashtagSet:
-            try:
-                ht = Hashtag.objects.create(name=h.lower())
-                hashtag_list.append(ht)
-            except Exception as e:
-                ht = Hashtag.objects.get(name=h.lower())
-                hashtag_list.append(ht)
-            else:
-                pass
-
-        post = self.create(profile=profile, content=content, location_lat=lat, location_lon=lon)
-        for ht in hashtag_list:
-            post.hashtags.add(ht)
-        return post
-
-class Post(models.Model):
-    """
-    post model
-    """
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    content = models.TextField()
-    pub_date = models.DateTimeField(default=datetime.now)
-    location_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    location_lon = models.DecimalField(max_digits=9, decimal_places=6, null=True)
-    hashtags = models.ManyToManyField('Hashtag')
-    objects = PostManager()
-
 class Hashtag(models.Model):
     """
     hashtag model
@@ -151,3 +119,36 @@ class Hashtag(models.Model):
             trending_hashtags_list.append(c[0])
 
         return trending_hashtags_list
+
+
+class PostManager(models.Manager):
+    def create_post(self, profile, content, lat, lon):
+        words = content
+        hashtagSet = {ht[1:] for ht in words.split() if ht.startswith("#")}
+        hashtag_list = []
+        for h in hashtagSet:
+            try:
+                ht = Hashtag.objects.create(name=h.lower())
+                hashtag_list.append(ht)
+            except Exception as e:
+                ht = Hashtag.objects.get(name=h.lower())
+                hashtag_list.append(ht)
+            else:
+                pass
+
+        post = self.create(profile=profile, content=content, location_lat=lat, location_lon=lon)
+        for ht in hashtag_list:
+            post.hashtags.add(ht)
+        return post
+
+class Post(models.Model):
+    """
+    post model
+    """
+    profile = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    content = models.TextField()
+    pub_date = models.DateTimeField(default=datetime.now)
+    location_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    location_lon = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    hashtags = models.ManyToManyField('Hashtag')
+    objects = PostManager()

@@ -6,7 +6,7 @@ from django.db.models import Count
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import Post, Profile, Hashtag #, Post_hashtag, Follow
+from .models import Post, Profile, Hashtag 
 from .forms import LoginForm, RegisterForm, NewPostForm, SearchForm, ProfileForm, DeletePost, DeleteProfile
 
 from django.utils.translation import ugettext_lazy as _
