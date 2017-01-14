@@ -6,7 +6,7 @@ from django.db.models import Count
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import Post, Profile, Hashtag 
+from .models import Post, Profile, Hashtag
 from .forms import LoginForm, RegisterForm, NewPostForm, SearchForm, ProfileForm, DeletePost, DeleteProfile
 
 from django.utils.translation import ugettext_lazy as _
@@ -80,6 +80,9 @@ def login_page(request):
     """
     context = {}
 
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/microblog')
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = LoginForm(request.POST)
@@ -138,7 +141,7 @@ def register_page(request):
                     user =  User.objects.create_user(username, email, password1)
                     profile = Profile.objects.create_profile(user=user, displayName=displayName)
 
-                    login(request, user)
+                    #login(request, user)
 
                     return HttpResponseRedirect('/microblog/login')
                 except Exception as e:

@@ -10,8 +10,8 @@ class LoginForm(forms.Form):
         - username -- the user username
         - password -- the user password
     """
-    username = forms.CharField(label='Username:', max_length=100)
-    password = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    username = forms.CharField(label='Username:',min_length=6, max_length=100)
+    password = forms.CharField(min_length=6, max_length=100, widget=forms.PasswordInput)
 
 class RegisterForm(forms.Form):
     """
@@ -24,11 +24,11 @@ class RegisterForm(forms.Form):
         - password1 -- the first password input
         - password1 -- the second password input
     """
-    username = forms.CharField(label='Username:', max_length=100)
+    username = forms.CharField(label='Username:',min_length=6,  max_length=100)
     displayName = forms.CharField(label="Display name:", min_length=5, max_length=30, required=False)
     email = forms.CharField(label='email:', max_length=100)
-    password1 = forms.CharField(max_length=100, widget=forms.PasswordInput)
-    password2 = forms.CharField(max_length=100, widget=forms.PasswordInput)
+    password1 = forms.CharField(min_length=6, max_length=100, widget=forms.PasswordInput)
+    password2 = forms.CharField(min_length=6, max_length=100, widget=forms.PasswordInput)
 
 class NewPostForm(forms.Form):
     """
