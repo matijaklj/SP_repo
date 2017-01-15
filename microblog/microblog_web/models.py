@@ -19,6 +19,14 @@ class MyModel(models.Model):
 
 class ProfileManager(models.Manager):
     def create_profile(self, user, displayName):
+        """
+        returns new profile
+
+        Keyword arguments:
+            - self -- the profile object
+            - user -- the User object
+            - displayName -- the display name string
+        """
         profile = self.create(user=user, displayName=displayName, description="")
         profile.following.add(profile) # vsak sam sebe followa
         return profile
@@ -30,7 +38,6 @@ class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     displayName = models.CharField( max_length=30, blank=True, verbose_name=_("Display name"), default=User.username)
     description = models.CharField(max_length=150, default='', blank=True, verbose_name=_('Description'))
-    # todo dodaj profile_img, cover_img,...
     coverImage = models.FileField(upload_to=user_directory_path, default='default/img/cover-image.jpg', blank=True, verbose_name=_("Cover image:"))
     profileImage = models.FileField(upload_to=user_directory_path, default='default/img/profile-image.jpg', blank=True, verbose_name=_("Profile image:"))
     following = models.ManyToManyField("self")
@@ -123,6 +130,19 @@ class Hashtag(models.Model):
 
 class PostManager(models.Manager):
     def create_post(self, profile, content, lat, lon):
+        """
+        creates and returns new post for the profile,
+        with the conent and location specified.
+        The function also creates hastags that are in
+        the post content.
+
+        Keyword arguments:
+            - self -- the post object
+            - profile -- the Profile object
+            - content -- the conent od the post (string)
+            - lat -- latitude of the location (double)
+            - lon -- longitude of the location (double)
+        """
         words = content
         hashtagSet = {ht[1:] for ht in words.split() if ht.startswith("#")}
         hashtag_list = []
@@ -151,4 +171,5 @@ class Post(models.Model):
     location_lat = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     location_lon = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     hashtags = models.ManyToManyField('Hashtag')
+
     objects = PostManager()

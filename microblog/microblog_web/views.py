@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from datetime import datetime, timedelta
 from django.db.models import Count
+import logging
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -10,6 +11,9 @@ from .models import Post, Profile, Hashtag
 from .forms import LoginForm, RegisterForm, NewPostForm, SearchForm, ProfileForm, DeletePost, DeleteProfile
 
 from django.utils.translation import ugettext_lazy as _
+
+postLogger = logging.getLogger('postLogger')
+userLogger = logging.getLogger('userLogger')
 
 def index(request):
     """
@@ -141,7 +145,8 @@ def register_page(request):
                     user =  User.objects.create_user(username, email, password1)
                     profile = Profile.objects.create_profile(user=user, displayName=displayName)
 
-                    #login(request, user)
+                    # logging when a new user is registered
+                    userLogger.info("[" + str(datetime.now()) +"] NEW User id: " + str(user.id) + " registered.")
 
                     return HttpResponseRedirect('/microblog/login')
                 except Exception as e:
@@ -182,6 +187,9 @@ def newpost(request):
             location_lon = None
         if not content == "":
             newpost = Post.objects.create_post(profile=profile, content=content, lat=location_lat, lon=location_lon)
+
+            # logging when a new post is posted
+            postLogger.info("[" + str(datetime.now()) +"] POSTED Post id: " + str(newpost.id) + " BY User id: " + str(request.user.id))
 
 
     return HttpResponseRedirect('/microblog')
@@ -309,8 +317,13 @@ def delete_profile(request):
         if form.is_valid():
             profile_id = form.cleaned_data['profile_id']
             profile = Profile.objects.get(id=profile_id)
+            userId = profile.user.id
             Profile.delete(profile)
-            logout(request)
+            if request.user.id == userId:
+                logout(request)
+
+            # logging when a user is deleted, and by whom
+            userLogger.info("[" + str(datetime.now()) +"] DELETED user id: " + str(userId) + " BY User id: " + str(request.user.id))
 
     return HttpResponseRedirect('/microblog')
 
@@ -327,5 +340,8 @@ def delete_post(request):
         if form.is_valid():
             post_id = form.cleaned_data['post_id']
             Post.objects.get(id=post_id).delete()
+
+            # logging when a post is deleted, and by whom
+            postLogger.info("[" + str(datetime.now()) +"] DELETED Post id: " + str(post_id) + " BY User id: " + str(request.user.id))
 
     return HttpResponseRedirect('/microblog')

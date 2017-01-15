@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 14:24+0000\n"
+"POT-Creation-Date: 2017-01-15 16:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,20 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: microblog_web/models.py:31
+#: microblog_web/models.py:39
 #: microblog_web/templates/microblog_web/register.html:27
 msgid "Display name"
 msgstr "Prikazno ime"
 
-#: microblog_web/models.py:32
+#: microblog_web/models.py:40
 msgid "Description"
 msgstr "Opis"
 
-#: microblog_web/models.py:34
+#: microblog_web/models.py:41
 msgid "Cover image:"
 msgstr "Pokrovna slika"
 
-#: microblog_web/models.py:35
+#: microblog_web/models.py:42
 msgid "Profile image:"
 msgstr "Profilna slika"
 
@@ -136,7 +136,8 @@ msgstr "Sledi"
 
 #: microblog_web/templates/microblog_web/register.html:15
 msgid "Please insert your info below and register to our microblog"
-msgstr "Prosimo vas da vpišete vaše podatke in se registrirate na naš microblog"
+msgstr ""
+"Prosimo vas da vpišete vaše podatke in se registrirate na naš microblog"
 
 #: microblog_web/templates/microblog_web/register.html:15
 msgid "Marked fields are required"
@@ -170,19 +171,19 @@ msgstr "Uredi"
 msgid "Delete profile:"
 msgstr "Zbriši profil:"
 
-#: microblog_web/views.py:93 microblog_web/views.py:96
+#: microblog_web/views.py:100 microblog_web/views.py:103
 msgid "Incorrect username or password!"
 msgstr "Napačno uporabniško ime ali geslo!"
 
-#: microblog_web/views.py:145 microblog_web/views.py:148
+#: microblog_web/views.py:153 microblog_web/views.py:156
 msgid "Username is already taken!"
 msgstr "Uporabniško ime je že zasedeno!"
 
-#: microblog_web/views.py:151
+#: microblog_web/views.py:159
 msgid "Passwords must match!!!"
 msgstr "Gesla se morata ujemati!!!"
 
-#: microblog_web/views.py:153
+#: microblog_web/views.py:161
 msgid "Please fill all the marked fields"
 msgstr "Prosim izpolnite vsa označena polja"
 

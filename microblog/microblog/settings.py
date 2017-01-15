@@ -124,11 +124,43 @@ LANGUAGES = [
   ('sl-si', 'Slovenian'),
 ]
 
+# logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'posts': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logging/posts.log'),
+        },
+	'users': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logging/users.log'),
+        },
+    },
+    'loggers': {
+        'postLogger': {
+            'handlers': ['posts'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+	'userLogger': {
+            'handlers': ['users'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = '/home/matija/Documents/SP/media'

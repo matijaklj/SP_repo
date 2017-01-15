@@ -540,10 +540,10 @@ div .my-profile .cover-image {
 
     font-weight: bold;
 
-    white-space: nowrap;
+    /*white-space: nowrap;*/
 }
 
-/* sprites */
+/* sprites
 .sprite {
     background-image: url("../icon/spritesheet.png");
     background-repeat: no-repeat;
@@ -592,7 +592,7 @@ div .my-profile .cover-image {
     height: 20px;
     background-position: -5px -65px;
 }
-/* ------ */
+ */
 
 .container-menu {
     flex-grow: 2;
